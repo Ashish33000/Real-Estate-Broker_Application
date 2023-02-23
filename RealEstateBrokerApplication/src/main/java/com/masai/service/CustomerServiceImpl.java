@@ -17,7 +17,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public Customer createCustomer(Customer customer) throws CustomerException {
-		Customer existiongCustomer=customerRepo.findByMobileNo(customer.getMobileNo());
+		Customer existiongCustomer=customerRepo.findByCustomerMobileNo(customer.getCustomerMobileNo());
 		if(existiongCustomer!=null) {
 			throw new CustomerException("Customer Already Registered with Mobile n");
 		}

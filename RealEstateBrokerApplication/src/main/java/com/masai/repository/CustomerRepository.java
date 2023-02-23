@@ -7,6 +7,6 @@ import com.masai.model.Customer;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 	
-	public Customer findByMobileNo(String mobileNo);
+	public Customer findByCustomerMobileNo(String mobileNo);
 
 }

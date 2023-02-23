@@ -6,17 +6,16 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import lombok.Data;
-
-@Data
 @Entity
-public class Customer {
+@Data
+public class Admin {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer customerId;
-	private String customerName;
-	private String customerMobileNo;
-	private String customerPassword;
+	private Integer adminId;
+	private String adminName;
+	private String adminMobileNo;
+	private String adminPassword;
 	@Email
-	private String customerEmail;
+	private String adminEmail;
 
 }
