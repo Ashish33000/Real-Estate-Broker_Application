@@ -20,8 +20,8 @@ public class GlobalException {
 		err.setDetails(req.getDescription(false));
 		return new ResponseEntity<MyErrorDetails>(err,HttpStatus.BAD_REQUEST);
 	}
-	@ExceptionHandler(CustomerException.class)
-	public ResponseEntity<MyErrorDetails> CustomerExceptionHandler(CustomerException ee,WebRequest req){
+	@ExceptionHandler(UserException.class)
+	public ResponseEntity<MyErrorDetails> CustomerExceptionHandler(UserException ee,WebRequest req){
 		MyErrorDetails err=new MyErrorDetails();
 		err.setTimestamp(LocalDateTime.now());
 		err.setMessage(ee.getMessage());

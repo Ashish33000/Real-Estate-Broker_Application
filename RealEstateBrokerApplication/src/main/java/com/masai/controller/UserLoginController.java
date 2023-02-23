@@ -13,14 +13,14 @@ import com.masai.model.LoginDTO;
 import com.masai.service.LoginService;
 
 @RestController
-public class CustomerLoginController {
+public class UserLoginController {
 	@Autowired
 	private LoginService loginservice;
-	@PostMapping("/customerlogin")
+	@PostMapping("/userlogin")
 	public ResponseEntity<String> logInHandler(@RequestBody LoginDTO dto) throws LoginException{
 		return new ResponseEntity<>(loginservice.logIntoAccount(dto),HttpStatus.OK);
 	}
-	@PostMapping("/customerlogout")
+	@PostMapping("/userlogout")
 	public ResponseEntity<String> logoutInHandler(@RequestParam(required = false) String key) throws LoginException{
 		return new ResponseEntity<>(loginservice.logOutAccount(key),HttpStatus.OK);
 	}
