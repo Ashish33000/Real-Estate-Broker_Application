@@ -20,8 +20,40 @@ public class GlobalException {
 		err.setDetails(req.getDescription(false));
 		return new ResponseEntity<MyErrorDetails>(err,HttpStatus.BAD_REQUEST);
 	}
+	@ExceptionHandler(BrokerException.class)
+	public ResponseEntity<MyErrorDetails> BrokerHandler(BrokerException ee,WebRequest req){
+		MyErrorDetails err=new MyErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(ee.getMessage());
+		err.setDetails(req.getDescription(false));
+		return new ResponseEntity<MyErrorDetails>(err,HttpStatus.BAD_REQUEST);
+	}
+	@ExceptionHandler(DealException.class)
+	public ResponseEntity<MyErrorDetails> DealExceptionHandler(DealException ee,WebRequest req){
+		MyErrorDetails err=new MyErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(ee.getMessage());
+		err.setDetails(req.getDescription(false));
+		return new ResponseEntity<MyErrorDetails>(err,HttpStatus.BAD_REQUEST);
+	}
+	@ExceptionHandler(PropertyException.class)
+	public ResponseEntity<MyErrorDetails> propertyHandler(PropertyException ee,WebRequest req){
+		MyErrorDetails err=new MyErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(ee.getMessage());
+		err.setDetails(req.getDescription(false));
+		return new ResponseEntity<MyErrorDetails>(err,HttpStatus.BAD_REQUEST);
+	}
 	@ExceptionHandler(UserException.class)
-	public ResponseEntity<MyErrorDetails> CustomerExceptionHandler(UserException ee,WebRequest req){
+	public ResponseEntity<MyErrorDetails> UserExceptionHandler(UserException ee,WebRequest req){
+		MyErrorDetails err=new MyErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(ee.getMessage());
+		err.setDetails(req.getDescription(false));
+		return new ResponseEntity<MyErrorDetails>(err,HttpStatus.BAD_REQUEST);
+	}
+	@ExceptionHandler(CustomerException.class)
+	public ResponseEntity<MyErrorDetails> CustomerExceptionHandler(CustomerException ee,WebRequest req){
 		MyErrorDetails err=new MyErrorDetails();
 		err.setTimestamp(LocalDateTime.now());
 		err.setMessage(ee.getMessage());
