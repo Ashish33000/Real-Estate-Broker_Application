@@ -13,17 +13,19 @@ import com.masai.exception.AdminException;
 import com.masai.model.Admin;
 import com.masai.service.AdminService;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class AdminController {
 	@Autowired
 	 private AdminService adminservice;
 	
 	@PostMapping("/admin")
-	public ResponseEntity<Admin> saveAdminHandler(@RequestBody Admin admin) throws AdminException{
+	public ResponseEntity<Admin> saveAdminHandler(@Valid @RequestBody Admin admin) throws AdminException{
 		return new ResponseEntity<>(adminservice.createAdmin(admin),HttpStatus.CREATED);
 	}
 	@PutMapping("/admin")
-	public ResponseEntity<Admin> updateAdminHandler(@RequestBody Admin admin,@RequestParam(required = false) String key) throws AdminException{
+	public ResponseEntity<Admin> updateAdminHandler(@Valid @RequestBody Admin admin,@RequestParam(required = false) String key) throws AdminException{
 		return new ResponseEntity<>(adminservice.updateAdmin(admin, key),HttpStatus.CREATED);
 	}
 

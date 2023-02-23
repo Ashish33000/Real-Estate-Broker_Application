@@ -13,16 +13,18 @@ import com.masai.exception.CustomerException;
 import com.masai.model.Customer;
 import com.masai.service.CustomerService;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class CustomerController {
 	@Autowired
 	private CustomerService customerservice;
 	@PostMapping("/customers")
-	public ResponseEntity<Customer> saveCustomerHandler(@RequestBody Customer customer) throws CustomerException{
+	public ResponseEntity<Customer> saveCustomerHandler(@Valid @RequestBody Customer customer) throws CustomerException{
 		return new ResponseEntity<Customer>(customerservice.createCustomer(customer),HttpStatus.CREATED);
 	}
 	@PutMapping("/customers")
-	public ResponseEntity<Customer> updateCustomerHandler(@RequestBody Customer customer,@RequestParam(required = false) String key) throws CustomerException{
+	public ResponseEntity<Customer> updateCustomerHandler(@Valid @RequestBody Customer customer,@RequestParam(required = false) String key) throws CustomerException{
 		return new ResponseEntity<Customer>(customerservice.updateCustomer(customer, key),HttpStatus.CREATED);
 	}
 
