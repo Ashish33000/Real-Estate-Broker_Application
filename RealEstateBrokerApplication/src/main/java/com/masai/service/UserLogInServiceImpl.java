@@ -8,33 +8,33 @@ import org.springframework.stereotype.Service;
 
 import com.masai.exception.LoginException;
 import com.masai.model.CurrentUserSession;
-import com.masai.model.Customer;
+import com.masai.model.User;
 import com.masai.model.LoginDTO;
-import com.masai.repository.CustomerRepository;
+import com.masai.repository.UserRepository;
 import com.masai.repository.SessionRepository;
 
 import net.bytebuddy.utility.RandomString;
 @Service
-public class CustomerLogInServiceImpl implements LoginService {
+public class UserLogInServiceImpl implements LoginService {
 	@Autowired
-	private CustomerRepository  customerRepo;
+	private UserRepository  userRepo;
 	@Autowired
 	private SessionRepository sessionRepo;
 
 	@Override
 	public String logIntoAccount(LoginDTO dto) throws LoginException {
-		Customer existiongCustomer=customerRepo.findByCustomerMobileNo(dto.getMobileNo());
-		if(existiongCustomer==null) {
+		User existiongUser=userRepo.findByUserMobileNo(dto.getMobileNo());
+		if(existiongUser==null) {
 			throw new LoginException("Please Enter a Valid Mobile no");
 		}
-		Optional<CurrentUserSession> validCustomerSession=sessionRepo.findById(existiongCustomer.getCustomerId());
+		Optional<CurrentUserSession> validCustomerSession=sessionRepo.findById(existiongUser.getUserId());
 		if(validCustomerSession.isPresent()) {
 			throw new LoginException("User already login with this number");
 		}
-		if(existiongCustomer.getCustomerPassword().equals(dto.getPassword())) {
+		if(existiongUser.getUserPassword().equals(dto.getPassword())) {
 			String key=RandomString.make(6);
 			
-			CurrentUserSession currentusersession=new CurrentUserSession(existiongCustomer.getCustomerId(),key,LocalDateTime.now());
+			CurrentUserSession currentusersession=new CurrentUserSession(existiongUser.getUserId(),key,LocalDateTime.now());
 			sessionRepo.save(currentusersession);
 			return currentusersession.toString();
 		}else
@@ -44,11 +44,11 @@ public class CustomerLogInServiceImpl implements LoginService {
 
 	@Override
 	public String logOutAccount(String key) throws LoginException {
-		CurrentUserSession validCustomerSession=sessionRepo.findByUuid(key);
-		if(validCustomerSession==null) {
+		CurrentUserSession validUserSession=sessionRepo.findByUuid(key);
+		if(validUserSession==null) {
 			throw new LoginException("User Not logged in with this Number");
 		}
-		sessionRepo.delete(validCustomerSession);
+		sessionRepo.delete(validUserSession);
 		return "Logged out";
 	}
 

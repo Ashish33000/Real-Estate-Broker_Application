@@ -13,21 +13,21 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Customer {
+public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer customerId;
-	@NotNull(message = "admin name Should not be null")
-	private String customerName;
+	private Integer userId;
+	@NotNull(message = "user name Should not be null")
+	private String userName;
 	@NotNull(message = "Mobile no Should not be null")
-	@Pattern(regexp = "[6,7,8,9]{1}[0-9]{9}",message = "Mobile no should be of 10 digit only")
-	private String customerMobileNo;
+	@Pattern(regexp = "[6-9]{1}[0-9]{9}",message = "Mobile no should be of 10 digit only")
+	private String userMobileNo;
 	@NotNull(message = "Customer Password Should not be null")
 	@Size(min = 8,max = 15,message = "Password should be Min 8 character and max 15 character")
-	private String customerPassword;
+	private String userPassword;
 	@Email
-	@NotNull(message = "Customer Email Should not be null")
+	@NotNull(message = "user Email Should not be null")
 	@Column(unique =true )
-	private String customerEmail;
+	private String userEmail;
 
 }
