@@ -28,7 +28,7 @@ public class CustomerServiceImpl implements CustomerService {
 	public Customer updateCustomer(Customer customer, String key) throws CustomerException {
 		CurrentUserSession loggInUser=sessionRepo.findByUuid(key);
 		if(loggInUser==null) {
-			
+			throw new CustomerException("Please provide valid key to update Customer");
 		}
 		if(customer.getCustomerId()==loggInUser.getUserId()) {
 			return customerRepo.save(customer);
