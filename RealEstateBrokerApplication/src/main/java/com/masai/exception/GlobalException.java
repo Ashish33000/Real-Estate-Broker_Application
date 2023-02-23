@@ -28,6 +28,14 @@ public class GlobalException {
 		err.setDetails(req.getDescription(false));
 		return new ResponseEntity<MyErrorDetails>(err,HttpStatus.BAD_REQUEST);
 	}
+	@ExceptionHandler(AdminException.class)
+	public ResponseEntity<MyErrorDetails> AdminExceptionHandler(AdminException ee,WebRequest req){
+		MyErrorDetails err=new MyErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(ee.getMessage());
+		err.setDetails(req.getDescription(false));
+		return new ResponseEntity<MyErrorDetails>(err,HttpStatus.BAD_REQUEST);
+	}
 	
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<MyErrorDetails> myAnyExceptionHandler(Exception ee,WebRequest req){

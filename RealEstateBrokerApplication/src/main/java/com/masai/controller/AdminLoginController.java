@@ -10,17 +10,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.exception.LoginException;
 import com.masai.model.LoginDTO;
+import com.masai.service.AdminLoginService;
 import com.masai.service.LoginService;
 
 @RestController
-public class LoginController {
+public class AdminLoginController {
 	@Autowired
-	private LoginService loginservice;
-	@PostMapping("/login")
+	private AdminLoginService loginservice;
+	@PostMapping("/adminlogin")
 	public ResponseEntity<String> logInHandler(@RequestBody LoginDTO dto) throws LoginException{
 		return new ResponseEntity<>(loginservice.logIntoAccount(dto),HttpStatus.OK);
 	}
-	@PostMapping("/logout")
+	@PostMapping("/adminlogout")
 	public ResponseEntity<String> logoutInHandler(@RequestParam(required = false) String key) throws LoginException{
 		return new ResponseEntity<>(loginservice.logOutAccount(key),HttpStatus.OK);
 	}
