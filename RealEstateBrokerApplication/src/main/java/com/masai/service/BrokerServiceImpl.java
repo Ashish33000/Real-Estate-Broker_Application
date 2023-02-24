@@ -1,3 +1,4 @@
+
 package com.masai.service;
 
 import java.util.List;
@@ -33,17 +34,10 @@ public class BrokerServiceImpl implements BrokerService {
 		
 	}
 
-	@Override
-	public Broker removeBroker(int broId) throws BrokerException {
-		Optional<Broker> broker=brokerRepo.findById(broId);
-		if(broker.isEmpty())
-			throw new BrokerException("broker not found by id"+broId);
-		brokerRepo.delete(broker.get());
-		return broker.get();
-	}
+	
 
 	@Override
-	public Broker viewBroker(int broId) throws BrokerException {
+	public Broker viewBroker(Integer broId) throws BrokerException {
 		Optional<Broker> broker=brokerRepo.findById(broId);
 		if(broker.isPresent()) {
 			return broker.get();
@@ -57,6 +51,15 @@ public class BrokerServiceImpl implements BrokerService {
 		List<Broker> broker=brokerRepo.findAll();
 		
 		return broker;
+	}
+
+	@Override
+	public Broker removeBroker(Integer broId) throws BrokerException {
+		Optional<Broker> broker=brokerRepo.findById(broId);
+		if(broker.isEmpty())
+			throw new BrokerException("broker not found by id"+broId);
+		brokerRepo.delete(broker.get());
+		return broker.get();
 	}
 
 	
