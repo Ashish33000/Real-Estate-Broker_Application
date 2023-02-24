@@ -38,7 +38,7 @@ public class UserController {
 		return new ResponseEntity<User>(userservice.updateUser(user, key),HttpStatus.CREATED);
 	}
 	@PostMapping("/customer")
-	public ResponseEntity<Customer> updateCustomerHandler(@Valid @RequestBody  Customer customer) throws CustomerException{
+	public ResponseEntity<Customer> addCustomerHandler(@Valid @RequestBody  Customer customer) throws CustomerException{
 		return new ResponseEntity<>(customerService.addCoustomer(customer),HttpStatus.CREATED);
 	}
 	@PutMapping("/customer")
@@ -46,11 +46,11 @@ public class UserController {
 		return new ResponseEntity<>(customerService.editCoustomer(customer),HttpStatus.CREATED);
 	}
 	@DeleteMapping("/customer/{custId}")
-	public ResponseEntity<Customer> deleteCustomerHandler(@PathVariable("custid") Integer custId) throws CustomerException{
+	public ResponseEntity<Customer> deleteCustomerHandler(@PathVariable("custId") Integer custId) throws CustomerException{
 		return new ResponseEntity<>(customerService.removeCoustomer(custId),HttpStatus.CREATED);
 	}
 	@GetMapping("/customer/{custId}")
-	public ResponseEntity<Customer> viewCustomerHandler(@PathVariable("custid") Integer custId) throws CustomerException{
+	public ResponseEntity<Customer> viewCustomerHandler(@PathVariable("custId") Integer custId) throws CustomerException{
 		return new ResponseEntity<>(customerService.viewCoustomer(custId),HttpStatus.FOUND);
 	}
 	@GetMapping("/customers")

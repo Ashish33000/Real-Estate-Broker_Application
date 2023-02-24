@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 import com.masai.exception.UserException;
 import com.masai.model.CurrentUserSession;
 import com.masai.model.User;
-import com.masai.repository.UserRepository;
 import com.masai.repository.SessionRepository;
+import com.masai.repository.UserRepository;
 @Service
 public class UserServiceImpl implements UserService {
 	@Autowired
@@ -16,12 +16,12 @@ public class UserServiceImpl implements UserService {
 	private SessionRepository sessionRepo;
 
 	@Override
-	public User createUser(User customer) throws UserException {
-		User existiongCustomer=userRepo.findByUserMobileNo(customer.getUserMobileNo());
-		if(existiongCustomer!=null) {
+	public User createUser(User user) throws UserException {
+		User existiongUser=userRepo.findByUserMobileNo(user.getUserMobileNo());
+		if(existiongUser!=null) {
 			throw new UserException("Customer Already Registered with Mobile n");
 		}
-		return userRepo.save(customer);
+		return userRepo.save(user);
 	}
 
 	@Override

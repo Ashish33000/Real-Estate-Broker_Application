@@ -12,9 +12,10 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
-@Entity
+
 @Data
-@Inheritance(strategy = InheritanceType.JOINED)
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Admin {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
