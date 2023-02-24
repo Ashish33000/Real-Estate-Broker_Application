@@ -37,6 +37,14 @@
 <h1>Service Interfaces:</h1>
 
 ![mod3](https://user-images.githubusercontent.com/87129673/220265524-2612d025-c96f-4511-93f3-7fc84e968d70.PNG)
+
+<h1>Enhance Entity Diagram:</h1>
+
+
+![EER](https://user-images.githubusercontent.com/87129673/221099393-3b71775f-9963-4d51-b591-48484af83904.png)
+
+
+
 <h1>Team Members:</h1>
 <p>Ashish Kumar</p>
 <p>Nagesh Salgude</p>
