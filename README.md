@@ -40,8 +40,9 @@
 
 <h1>Enhance Entity Diagram:</h1>
 
+![EER](https://user-images.githubusercontent.com/87129673/221236568-ae45e069-ebe6-4d06-86fd-d9101fcbbcdf.png)
 
-![EER](https://user-images.githubusercontent.com/87129673/221099393-3b71775f-9963-4d51-b591-48484af83904.png)
+
 
 
 
