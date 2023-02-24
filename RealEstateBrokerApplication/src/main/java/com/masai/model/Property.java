@@ -1,5 +1,7 @@
 package com.masai.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,6 +26,7 @@ public class Property {
 
 	
 	@ManyToOne
+	@JsonIgnore
 	private Broker broker;
 	@ManyToOne
 	private Customer customers;
