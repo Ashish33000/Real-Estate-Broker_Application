@@ -1,10 +1,17 @@
 package com.masai.service;
 
-import com.masai.exception.*;
-import com.masai.model.*;
-import com.masai.repository.*;
+import com.masai.exception.CustomerException;
+import com.masai.heybroker.exception.*;
+import com.masai.heybroker.model.*;
+import com.masai.heybroker.repository.*;
+import com.masai.model.Customer;
+import com.masai.model.CustomerCurrentSession;
+import com.masai.model.Deal;
+import com.masai.repository.CustomerDao;
+import com.masai.repository.CustomerSessionDao;
+
+import org.hibernate.validator.internal.properties.Property;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.convert.Property;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -17,23 +24,23 @@ import javax.security.auth.login.LoginException;
 public class CustomerServiceImpl implements CustomerService{
 
     @Autowired
-    private Customer customerDao;
+    private CustomerDao customerDao;
     @Autowired
-    private CustomerService customerSessionDao;
+    private CustomerSessionDao customerSessionDao;
 
     @Autowired
-    private Property propertyDao;
+    private PropertyDao propertyDao;
 
     @Autowired
-    private Deal dealDao;
+    private DealDao dealDao;
 
     @Autowired
-    private Broker brokerDao;
+    private BrokerDao brokerDao;
 
 
     @Override
     public Customer createCustomer(Customer customer) throws CustomerException {
-        Optional<Customer> existingCustomer = customerDao.findById(customer.getEmail());
+        Customer existingCustomer = customerDao.findByEmail(customer.getEmail());
 
 
 
@@ -51,7 +58,7 @@ public class CustomerServiceImpl implements CustomerService{
 
         if(customer.getCustomerId()==logeedInUser.getCustomerId()){
 
-            return Customer.save(customer);
+            return customerDao.save(customer);
         }else throw new CustomerException("Invalid customer details please log in first");
     }
 
@@ -62,7 +69,7 @@ public class CustomerServiceImpl implements CustomerService{
 
         if(customerCurrentSession==null) throw new LoginException("please login first");
 
-        Optional<Customer> opt= Customer.findById(customerCurrentSession.getCustomerId());
+        Optional<Customer> opt= customerDao.findById((Integer) customerCurrentSession.getCustomerId());
 
         return opt.get();
     }
@@ -74,7 +81,7 @@ public class CustomerServiceImpl implements CustomerService{
 
         if(customerCurrentSession==null) throw new LoginException("please login first");
 
-        Property obj=Property.valueOf(prpType);
+        PropertyType obj=PropertyType.valueOf(prpType);
 
         List<Property> propertyList=propertyDao.findByPropertyType(obj);
         if(propertyList.isEmpty()) throw new PropertyException("property not found with given property type");
@@ -116,7 +123,7 @@ public class CustomerServiceImpl implements CustomerService{
            throw new PropertyException("Property already sold");
        }
 
-       Optional<Customer> opt1= Customer.findById(logeedInUser.getCustomerId());
+       Optional<Customer> opt1= customerDao.findById(logeedInUser.getCustomerId());
 
        Customer customer= opt1.get();
 
@@ -132,26 +139,27 @@ public class CustomerServiceImpl implements CustomerService{
       property.getBroker().getDeals().add(deal);
       property.setStatus(false);
         property.setCustomer(customer);
-      Customer.save(customer);
+      customerDao.save(customer);
 
       return deal;
     }
 
     @Override
     public List<Deal> viewAllDeals(String key) throws LoginException, DealException {
-        CustomerCurrentSession logeedInUser = CustomerCurrentSession.findByCid(key);
+        CustomerCurrentSession logeedInUser = customerSessionDao.findByCid(key);
 
         if (logeedInUser == null) throw new LoginException("Please Login first");
 
-           Optional<Customer> customer = Customer.findById(logeedInUser.getCustomerId());
+           Optional<Customer> customer = customerDao.findById(logeedInUser.getCustomerId());
 
            List<Deal> deals = customer.get().getDeals();
 
-           if (deals.isEmpty()) throw new DealException();
+           if (deals.isEmpty()) throw new DealException("No any deal in your portfolio");
 
            return deals;
     }
 
+	@Override
 	public CustomerCurrentSession findByCid(String key) {
 		// TODO Auto-generated method stub
 		return null;

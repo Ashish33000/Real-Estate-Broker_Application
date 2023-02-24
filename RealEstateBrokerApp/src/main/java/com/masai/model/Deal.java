@@ -48,4 +48,14 @@ public class Deal {
 	@JoinColumn(name = "brokerId")
 	private Broker dealBroker;
 
+	public void setCustomerDeals(Customer customer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setDate(LocalDate now) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

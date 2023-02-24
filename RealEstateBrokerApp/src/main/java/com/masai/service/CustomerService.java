@@ -19,9 +19,9 @@ public interface CustomerService {
 
     public Customer getProfile(String key)  throws LoginException;
 
-    public List<Property> viewPropertyByPropertyType(String key, String propertyType) throws PropertyException, LoginException;
+    public List<org.hibernate.validator.internal.properties.Property> viewPropertyByPropertyType(String key, String propertyType) throws PropertyException, LoginException;
     
-	public List<Property> viewAllProperty(String key) throws PropertyException,LoginException,CustomerException;
+	public List<org.hibernate.validator.internal.properties.Property> viewAllProperty(String key) throws PropertyException,LoginException,CustomerException;
 
     public Deal addDeal(Integer propid , String key) throws PropertyException,LoginException;
 
