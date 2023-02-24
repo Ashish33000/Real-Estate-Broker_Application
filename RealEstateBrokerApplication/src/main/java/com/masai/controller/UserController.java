@@ -51,11 +51,11 @@ public class UserController {
 	}
 	@GetMapping("/customer/{custId}")
 	public ResponseEntity<Customer> viewCustomerHandler(@PathVariable("custid") Integer custId) throws CustomerException{
-		return new ResponseEntity<>(customerService.viewCoustomer(custId),HttpStatus.CREATED);
+		return new ResponseEntity<>(customerService.viewCoustomer(custId),HttpStatus.FOUND);
 	}
 	@GetMapping("/customers")
 	public ResponseEntity<List<Customer>> viewAllCustomerHandler() throws CustomerException{
-		return new ResponseEntity<>(customerService.viewAllCoustomer(),HttpStatus.CREATED);
+		return new ResponseEntity<>(customerService.viewAllCoustomer(),HttpStatus.FOUND);
 	}
 
 }
