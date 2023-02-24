@@ -5,21 +5,21 @@ import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import lombok.Data;
-@Entity
+
 @Data
-public class Broker {
+@Entity
+public class Broker{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer brokId;
 	private String broName;
-	@OneToMany(mappedBy = "brokers",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "broker",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	private List<Property> properties=new ArrayList<>();
-	@OneToOne
-	private Customer cutomer;
+	
 }
