@@ -1,8 +1,13 @@
 package com.masai.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,6 +43,24 @@ public class AdminController {
 	public ResponseEntity<Broker> saveBrokerHandler(@Valid @RequestBody Broker broker) throws BrokerException{
 		return new ResponseEntity<>(brokerService.saveBroker(broker),HttpStatus.CREATED);
 	}
+	@PutMapping("/broker")
+	public ResponseEntity<Broker> EditBrokerHandler(@Valid @RequestBody Broker broker) throws BrokerException{
+		return new ResponseEntity<>(brokerService.editBroker(broker),HttpStatus.CREATED);
+	}
+	
+	@DeleteMapping("/broker/{Id}")
+	public ResponseEntity<Broker> deleteBrokerHandler(@PathVariable("id") Integer id) throws BrokerException{
+		return new ResponseEntity<>(brokerService.removeBroker(id),HttpStatus.OK);
+	}
+	@GetMapping("/broker/{broId}")
+	public ResponseEntity<Broker> viewBrokerHandler(@PathVariable("broId") Integer broId) throws BrokerException{
+		return new ResponseEntity<>(brokerService.viewBroker(broId),HttpStatus.OK);
+	}
+	@GetMapping("/brokers")
+	public ResponseEntity<List<Broker>> allBrokerHandler() throws BrokerException{
+		return new ResponseEntity<>(brokerService.viewAllBrokers(),HttpStatus.OK);
+	}
+	
 	
 	
 	
