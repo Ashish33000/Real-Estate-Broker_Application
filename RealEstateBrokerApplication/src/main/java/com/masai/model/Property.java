@@ -2,6 +2,7 @@ package com.masai.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,8 +21,7 @@ public class Property {
 	private double offerCost;
 	private double areaSqft;
 	private String address;
-	private String street;
-	private String city;
+	private String street;	
 	private boolean status;
 
 	
@@ -30,6 +30,8 @@ public class Property {
 	private Broker broker;
 	@ManyToOne
 	private Customer customers;
+	@Embedded
+	private PropertyCriteria propertyCriteria;
 	
 	
 

@@ -24,5 +24,8 @@ public class Deal {
 	private double dealCost;	
 	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	private Property property;
+	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "deal")
+	private Customer customer;
+	
 
 }
