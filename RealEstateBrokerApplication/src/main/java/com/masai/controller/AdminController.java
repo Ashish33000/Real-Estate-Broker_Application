@@ -16,10 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.exception.AdminException;
 import com.masai.exception.BrokerException;
+import com.masai.exception.LoginException;
+import com.masai.exception.PropertyException;
 import com.masai.model.Admin;
 import com.masai.model.Broker;
+import com.masai.model.Property;
+import com.masai.model.PropertyCriteria;
 import com.masai.service.AdminService;
 import com.masai.service.BrokerService;
+import com.masai.service.PropertyService;
 
 import jakarta.validation.Valid;
 
@@ -30,26 +35,28 @@ public class AdminController {
 	@Autowired
 	private BrokerService brokerService;
 	
+	private PropertyService propService;
+	
 	@PostMapping("/admin")
 	public ResponseEntity<Admin> saveAdminHandler(@Valid @RequestBody Admin admin) throws AdminException{
 		return new ResponseEntity<>(adminservice.createAdmin(admin),HttpStatus.CREATED);
 	}
 	@PutMapping("/admin")
-	public ResponseEntity<Admin> updateAdminHandler(@Valid @RequestBody Admin admin,@RequestParam(required = false) String key) throws AdminException{
+	public ResponseEntity<Admin> updateAdminHandler(@Valid @RequestBody Admin admin,@RequestParam(required = false) String key) throws AdminException,LoginException{
 		return new ResponseEntity<>(adminservice.updateAdmin(admin, key),HttpStatus.CREATED);
 	}
 	
 	@PostMapping("/broker")
-	public ResponseEntity<Broker> saveBrokerHandler(@Valid @RequestBody Broker broker,@RequestParam(required =false ) String key) throws BrokerException{
+	public ResponseEntity<Broker> saveBrokerHandler(@Valid @RequestBody Broker broker,@RequestParam(required =false ) String key) throws BrokerException,LoginException{
 		return new ResponseEntity<>(brokerService.saveBroker(broker,key),HttpStatus.CREATED);
 	}
 	@PutMapping("/broker")
-	public ResponseEntity<Broker> EditBrokerHandler(@Valid @RequestBody Broker broker,@RequestParam(required =false ) String key) throws BrokerException{
+	public ResponseEntity<Broker> EditBrokerHandler(@Valid @RequestBody Broker broker,@RequestParam(required =false ) String key) throws BrokerException,LoginException{
 		return new ResponseEntity<>(brokerService.editBroker(broker,key),HttpStatus.CREATED);
 	}
 	
 	@DeleteMapping("/broker/{Id}")
-	public ResponseEntity<Broker> deleteBrokerHandler(@PathVariable("id") Integer id,@RequestParam(required =false ) String key) throws BrokerException{
+	public ResponseEntity<Broker> deleteBrokerHandler(@PathVariable("id") Integer id,@RequestParam(required =false ) String key) throws BrokerException,LoginException{
 		return new ResponseEntity<>(brokerService.removeBroker(id,key),HttpStatus.OK);
 	}
 	@GetMapping("/broker/{broId}")
@@ -60,6 +67,34 @@ public class AdminController {
 	public ResponseEntity<List<Broker>> allBrokerHandler() throws BrokerException{
 		return new ResponseEntity<>(brokerService.viewAllBrokers(),HttpStatus.OK);
 	}
+	@PostMapping("/addproperty")
+	public ResponseEntity<Property> savePropertyHandler(@Valid @RequestBody Property property ,@RequestParam(required =false ) String key) throws PropertyException,LoginException{
+		return new ResponseEntity<>(propService.saveProperty(property, key),HttpStatus.CREATED);
+	}
+	@DeleteMapping("/property/{propId}")
+	public ResponseEntity<Property> deletePropertyHandler(@Valid @PathVariable Integer propId ,@RequestParam(required =false ) String key) throws PropertyException,LoginException{
+		return new ResponseEntity<>(propService.deleteProperty(propId, key),HttpStatus.OK);
+	}
+	@PutMapping("/property/{propId}")
+	public ResponseEntity<Property> updatePropertyHandler(@Valid @RequestBody Property property,@PathVariable Integer PropId ,@RequestParam(required =false ) String key) throws PropertyException,LoginException{
+		property.setPropId(PropId);
+		Property prop=propService.updateProperty(property, key);
+		return new ResponseEntity<>(prop,HttpStatus.OK);
+	}
+	@GetMapping("/property/{propId}")
+	public ResponseEntity<Property> viewPropertyHandler(@Valid @PathVariable Integer propId ,@RequestParam(required =false ) String key) throws PropertyException,LoginException{
+		return new ResponseEntity<>(propService.viewProperty(propId, key),HttpStatus.OK);
+	}
+	@GetMapping("/properties")
+	public ResponseEntity<List<Property>>viewPropertyHandler(@RequestParam(required =false ) String key) throws PropertyException,LoginException{
+		return new ResponseEntity<>(propService.listAllProperty(key),HttpStatus.OK);
+	}
+	
+	@GetMapping("/propertiesCriteria")
+	public ResponseEntity<List<Property>>viewPropertyByCriteriaHandler(@RequestBody PropertyCriteria criteria,@RequestParam(required =false ) String key) throws PropertyException,LoginException{
+		return new ResponseEntity<>(propService. listPropertyBycriteria(criteria, key),HttpStatus.OK);
+	}
+	
 	
 	
 	
