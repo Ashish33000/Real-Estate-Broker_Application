@@ -1,55 +1,75 @@
 
 <h1>Real Estate Broker application</h1>
-<h2>Problem Statement</h2>
-<p>To Create an Application for online Real Estate buying/selling </p>
-    <p>Broker should be able to add/update/delete properties.</p>
-    <p>Customer should be able to:</p>
-<p>1.See the list of properties available for buying/renting based on criteria such as:</p>
-      <p>A. Property type i.e. Flat/Shop/Plot</p>
-      <p>B. Offer type i.e. Sell/Rent</p>
-      <p>C. City</p>
-      <p>Price range min to max</p>
-<p>2. Buy/rent a property listed by Broker.</p>
-<p>3. Once bought/rented property should no longer be available for others.</p>
-<p>4. See the properties he owned or rented</p>
+<h2>Rest API for Real Estate Broker Application</h2>
+<p>We have Developed the REST API for Real Estate Broker Application.This Api performs All the basic CRUD operation of our Application with user validation at every step</p>
+<h1>Modules</h1>
+<h3>I.LogIn module</h3>
+<h3>II.Customer Module</h3>
+<h3>III.Broker module</h3>
+<h3>IV.Property module</h3>
+<h3>v.Property Search module</h3>
+<h3>VI.Deal module</h3>
 
-<h1>Road Map:</h1>
-<p>Application will be developed in following Sprints:</p>
-<p>1. Core Java +JPA with Hibernate </p>
-<p>2. Spring Boot + Rest Controller + JPA with Hibernate</p>
+<h1>Features</h1>
+<p>Broker and Customers Autentication with session uuid</p>
+<h3>I.Broker Function</h3>
+<p>Broker is the main role in Entire Application</p>
+<p>Broker has the acess of entire Application like </p>
+<p>(a).Broker can Register property ,update Property ,Delete property,sell,and Rent property</p>
+<p>(b).Broker can register broker update and delete broker  </p>
 
-<h1>Modules:</h1>
+<h3>II.Customers Function</h3>
+<p>Customer can register himself on the platform </p>
+<p>Customer can view property  </p>
+<p>Customer can book property  </p>
+<p>Customer can buy propert  </p>
 
-<img src="https://user-images.githubusercontent.com/87129673/220265122-349e7817-e1a2-4c17-b47b-86be87550787.PNG"/>
+<h1>Tech Stack</h1>
+<p>Java</p>
+<p>Spring framework</p>
+<p>Spring Boot</p>
+<p>Spring Data JPA</p>
+<p>Hibernate</p>
+<p>MySql</p>
+<p>Swagger</p>
 
-
-
-
-
-
-
-
-<h1>Class Design:</h1>
-
-![mod2](https://user-images.githubusercontent.com/87129673/220265530-44bb8fa6-6416-4d5e-afe7-738011a2d693.PNG)
-
-
-<h1>Service Interfaces:</h1>
-
-![mod3](https://user-images.githubusercontent.com/87129673/220265524-2612d025-c96f-4511-93f3-7fc84e968d70.PNG)
-
-<h1>Enhance Entity Diagram:</h1>
-
-![EER](https://user-images.githubusercontent.com/87129673/221236568-ae45e069-ebe6-4d06-86fd-d9101fcbbcdf.png)
-
-
-
-
-
-<h1>Team Members:</h1>
+<h1>Contributer</h1>
 <p>Ashish Kumar</p>
 <p>Nagesh Salgude</p>
-<p>Sonali Ghorpade</p>
 <p>Neha Pandey</p>
+<p>Sonali Ghorpade</p>
 <p>Shishir Tripathi</p>
+
+<h1>Installation And Run</h1>
+<p>Before Running The Api Server You Should  Update the database config Inside The Application.properies file</p>
+<p>Update The port ni,username and password</p>
+<p>server.port=8088</p>
+
+
+<p>spring.datasource.url=jdbc:mysql://localhost:3306/dbName</p>
+<p>spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver</p>
+<p>spring.datasource.username=root</p>
+<p>spring.datasource.password=root</p>
+<p>spring.mvc.pathmatch.matching-strategy=ANT_PATH_MATCHER</p>
+<h1>Api Root EndPoints</h1>
+<p>http://localhost:8880/</p>
+<p>http://localhost:8880/swagger-ui/index.html</p>
+
+<h1>EER daigram</h1>
+
+<img src="https://user-images.githubusercontent.com/87129673/221365948-7b435f82-f945-4b0b-b362-4e9c987a678f.png" alt="">
+
+
+<h1>Flow Chart-daigram</h1>
+
+
+
+  
+
+
+
+
+
+
+
 
