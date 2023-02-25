@@ -50,4 +50,9 @@ public class Customer{
 	@JsonIgnore
 	private List<Deal> deals = new ArrayList<>();
 
+	public Object getCustomerId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

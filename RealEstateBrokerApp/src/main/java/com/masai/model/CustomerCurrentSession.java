@@ -24,4 +24,9 @@ public class CustomerCurrentSession {
     private String cid;
 
     private LocalDateTime time;
+
+	public Object getCustomerId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
