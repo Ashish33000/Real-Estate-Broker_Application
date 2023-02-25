@@ -40,17 +40,17 @@ public class AdminController {
 	}
 	
 	@PostMapping("/broker")
-	public ResponseEntity<Broker> saveBrokerHandler(@Valid @RequestBody Broker broker) throws BrokerException{
-		return new ResponseEntity<>(brokerService.saveBroker(broker),HttpStatus.CREATED);
+	public ResponseEntity<Broker> saveBrokerHandler(@Valid @RequestBody Broker broker,@RequestParam(required =false ) String key) throws BrokerException{
+		return new ResponseEntity<>(brokerService.saveBroker(broker,key),HttpStatus.CREATED);
 	}
 	@PutMapping("/broker")
-	public ResponseEntity<Broker> EditBrokerHandler(@Valid @RequestBody Broker broker) throws BrokerException{
-		return new ResponseEntity<>(brokerService.editBroker(broker),HttpStatus.CREATED);
+	public ResponseEntity<Broker> EditBrokerHandler(@Valid @RequestBody Broker broker,@RequestParam(required =false ) String key) throws BrokerException{
+		return new ResponseEntity<>(brokerService.editBroker(broker,key),HttpStatus.CREATED);
 	}
 	
 	@DeleteMapping("/broker/{Id}")
-	public ResponseEntity<Broker> deleteBrokerHandler(@PathVariable("id") Integer id) throws BrokerException{
-		return new ResponseEntity<>(brokerService.removeBroker(id),HttpStatus.OK);
+	public ResponseEntity<Broker> deleteBrokerHandler(@PathVariable("id") Integer id,@RequestParam(required =false ) String key) throws BrokerException{
+		return new ResponseEntity<>(brokerService.removeBroker(id,key),HttpStatus.OK);
 	}
 	@GetMapping("/broker/{broId}")
 	public ResponseEntity<Broker> viewBrokerHandler(@PathVariable("broId") Integer broId) throws BrokerException{
