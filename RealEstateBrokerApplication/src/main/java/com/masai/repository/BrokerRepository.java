@@ -6,6 +6,6 @@ import com.masai.model.Broker;
 
 public interface BrokerRepository extends JpaRepository<Broker, Integer> {
 	
-	public Broker findByBroName(String name);
+	
 
 }
