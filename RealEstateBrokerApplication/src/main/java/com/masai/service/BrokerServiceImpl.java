@@ -42,10 +42,15 @@ public class BrokerServiceImpl implements BrokerService {
 	@Override
 	public Broker editBroker(Broker broker, String key) throws BrokerException, LoginException {
 		CurrentUserSession logInUser=sessionRepo.findByUuid(key);
-		if(logInUser.equals(null))throw new AdminException("Admin not loggedIn");
+		if(logInUser.equals(null))throw new AdminException("Broker not loggedIn");
 		Optional<Broker> opt=brokerRepo.findById(broker.getBrokId());
+		if(opt.isPresent()) {
+			return brokerRepo.save(broker);
+		}else {
+			throw new BrokerException("broker not found ");
+		}
 		
-		return null;
+		
 	}
 
 
@@ -71,8 +76,12 @@ public class BrokerServiceImpl implements BrokerService {
 
 	@Override
 	public Broker saveBroker(Broker broker, String key) throws BrokerException, LoginException {
-		// TODO Auto-generated method stub
-		return null;
+		CurrentUserSession logInUser=sessionRepo.findByUuid(key);
+	
+		if(logInUser.equals(null))
+			throw new LoginException("Broker not loggedIn");
+		else
+			return brokerRepo.save(broker);
 	}
 
 
@@ -81,8 +90,18 @@ public class BrokerServiceImpl implements BrokerService {
 
 	@Override
 	public Broker removeBroker(Integer broId, String key) throws BrokerException, LoginException {
-		// TODO Auto-generated method stub
-		return null;
+		CurrentUserSession logInUser=sessionRepo.findByUuid(key);
+		if(logInUser.equals(null))throw new AdminException("Broker not loggedIn");
+		Optional<Broker> opt=brokerRepo.findById(broId);
+		if(opt.isPresent()) {
+			Broker broker=opt.get();
+			brokerRepo.delete(broker);
+			return broker;
+		}else {
+			throw new BrokerException("Broker is not found");
+		}
+		
+		
 	}
 
 	
