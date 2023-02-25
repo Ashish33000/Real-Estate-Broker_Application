@@ -7,13 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.masai.exception.CustomerException;
+import com.masai.exception.LoginException;
+import com.masai.model.CurrentUserSession;
 import com.masai.model.Customer;
 import com.masai.repository.CustomerRepository;
+import com.masai.repository.SessionRepository;
+import com.masai.repository.UserRepository;
 @Service
 
 public class CustomerServiceImpl implements CustomerService {
 	@Autowired
 	private CustomerRepository customerRepo;
+	
+	@Autowired
+	private SessionRepository sessionRepo;
+	
+	@Autowired
+	private UserRepository  userRepo;
 
 	@Override
 	public Customer addCoustomer(Customer customer) throws CustomerException {
@@ -26,8 +36,10 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public Customer editCoustomer(Customer customer) throws CustomerException {
-	if(customer!=null) {
+	public Customer editCoustomer(Customer customer,String key) throws CustomerException,LoginException {
+		CurrentUserSession logInUser=sessionRepo.findByUuid(key);
+		if(logInUser.equals(null))throw new LoginException("please provide valid key to update customer");
+	if(customer.getCustId()==logInUser.getUserId()) {
 		return customerRepo.save(customer);
 	}else {
 		throw new CustomerException("customer doesnot  Exist");
@@ -36,27 +48,39 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public Customer removeCoustomer(Integer custId) throws CustomerException {
-	    Optional<Customer> customer =customerRepo.findById(custId);
-	    if(customer.isEmpty())
-	    	throw new CustomerException("customer doesnot  Exist with Id"+custId);
-	    customerRepo.delete(customer.get());
-		return customer.get();
+	public Customer removeCoustomer(Integer custId, String key) throws CustomerException, LoginException {
+		CurrentUserSession logInUser=sessionRepo.findByUuid(key);
+		if(logInUser.equals(null))throw new LoginException("Admin not logged in");
+		Optional<Customer> opt=customerRepo.findById(custId);
+		if(opt.isPresent()) {
+			Customer customer=opt.get();
+			customerRepo.delete(customer);
+			return customer;
+		}else {
+			throw new CustomerException("customer not found by customerId"+custId);
+		}
+		
 	}
 
 	@Override
 	public Customer viewCoustomer(Integer custId) throws CustomerException {
-		 Optional<Customer> customer =customerRepo.findById(custId);
-		 if(customer.isPresent())
-		      return customer.get();
-		 else
-			 throw new CustomerException("customer doesnot  Exist with Id"+custId);
+		Optional<Customer> opt=customerRepo.findById(custId);
+		if(opt.isPresent()) {
+			return opt.get();
+		}else
+			throw new CustomerException("customer not found by customerId"+custId);
+		
 	}
 
 	@Override
 	public List<Customer> viewAllCoustomer() throws CustomerException {
-		List<Customer> customers=customerRepo.findAll();
-		return customers;
+		List<Customer> list=customerRepo.findAll();
+		if(list.size()==0)
+			throw new CustomerException("customer not found ");
+		else
+		return list;
 	}
+
+
 
 }

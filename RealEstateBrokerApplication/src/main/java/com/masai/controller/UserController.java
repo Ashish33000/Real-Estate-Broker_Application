@@ -42,12 +42,12 @@ public class UserController {
 		return new ResponseEntity<>(customerService.addCoustomer(customer),HttpStatus.CREATED);
 	}
 	@PutMapping("/customer")
-	public ResponseEntity<Customer> editCustomerHandler(@Valid @RequestBody  Customer customer) throws CustomerException{
-		return new ResponseEntity<>(customerService.editCoustomer(customer),HttpStatus.CREATED);
+	public ResponseEntity<Customer> editCustomerHandler(@Valid @RequestBody  Customer customer,@RequestParam(required = false) String key) throws CustomerException{
+		return new ResponseEntity<>(customerService.editCoustomer(customer,key),HttpStatus.CREATED);
 	}
 	@DeleteMapping("/customer/{custId}")
-	public ResponseEntity<Customer> deleteCustomerHandler(@PathVariable("custId") Integer custId) throws CustomerException{
-		return new ResponseEntity<>(customerService.removeCoustomer(custId),HttpStatus.CREATED);
+	public ResponseEntity<Customer> deleteCustomerHandler(@PathVariable("custId") Integer custId,@RequestParam(required = false) String key) throws CustomerException{
+		return new ResponseEntity<>(customerService.removeCoustomer(custId,key),HttpStatus.CREATED);
 	}
 	@GetMapping("/customer/{custId}")
 	public ResponseEntity<Customer> viewCustomerHandler(@PathVariable("custId") Integer custId) throws CustomerException{
