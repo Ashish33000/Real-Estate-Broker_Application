@@ -50,7 +50,7 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public Customer removeCoustomer(Integer custId, String key) throws CustomerException, LoginException {
 		CurrentUserSession logInUser=sessionRepo.findByUuid(key);
-		if(logInUser.equals(null))throw new LoginException("Admin not logged in");
+		if(logInUser.equals(null))throw new LoginException("Customer not logged in");
 		Optional<Customer> opt=customerRepo.findById(custId);
 		if(opt.isPresent()) {
 			Customer customer=opt.get();
