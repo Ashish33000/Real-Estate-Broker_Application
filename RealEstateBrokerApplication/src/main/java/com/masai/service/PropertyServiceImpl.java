@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.masai.exception.LoginException;
 import com.masai.exception.PropertyException;
@@ -14,7 +15,7 @@ import com.masai.repository.AdminRepository;
 import com.masai.repository.BrokerRepository;
 import com.masai.repository.PropertyRepository;
 import com.masai.repository.SessionRepository;
-
+@Service
 public class PropertyServiceImpl implements PropertyService {
 	@Autowired
 	private PropertyRepository  propertyRepo;
@@ -63,12 +64,12 @@ public class PropertyServiceImpl implements PropertyService {
 	public Property deleteProperty(Integer propId, String key) throws  LoginException, PropertyException {
 		CurrentUserSession logInUser=sessionRepo.findByUuid(key);
 		if(logInUser.equals(null))throw new LoginException("Broker not loggedIn");
-		Property property=fetchProperty(propId, key);
+		Property property=viewProperty(propId, key);
 		propertyRepo.deleteById(propId);
 		return property;
 	}
 	@Override
-	public Property fetchProperty(Integer propId, String key) throws  LoginException, PropertyException {
+	public Property viewProperty(Integer propId, String key) throws  LoginException, PropertyException {
 		CurrentUserSession logInUser=sessionRepo.findByUuid(key);
 		if(logInUser.equals(null))throw new LoginException("Broker not loggedIn");
 	    Optional<Property> property=propertyRepo.findById(propId);
@@ -78,7 +79,7 @@ public class PropertyServiceImpl implements PropertyService {
         	 return property.get();
 	}
 	@Override
-	public List<Property> fetchProperty(String key) throws  LoginException, PropertyException {
+	public List<Property> listAllProperty(String key) throws  LoginException, PropertyException {
 		CurrentUserSession logInUser=sessionRepo.findByUuid(key);
 		if(logInUser.equals(null))throw new LoginException("Broker not loggedIn");
 		 List<Property> list=propertyRepo.findAll();
@@ -88,7 +89,7 @@ public class PropertyServiceImpl implements PropertyService {
 		return list;
 	}
 	@Override
-	public List<Property> fetchPropertyBycriteria(PropertyCriteria criteria, String key)
+	public List<Property> listPropertyBycriteria(PropertyCriteria criteria, String key)
 			throws LoginException, PropertyException {
 		// TODO Auto-generated method stub
 		CurrentUserSession logInUser=sessionRepo.findByUuid(key);
