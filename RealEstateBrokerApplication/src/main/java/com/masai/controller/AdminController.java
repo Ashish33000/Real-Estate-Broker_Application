@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.exception.AdminException;
 import com.masai.exception.BrokerException;
@@ -26,6 +27,7 @@ import com.masai.model.PropertyCriteria;
 import com.masai.service.AdminService;
 import com.masai.service.BrokerService;
 import com.masai.service.PropertyService;
+@RestController
 public class AdminController {
 	@Autowired
 	 private AdminService adminservice;
@@ -34,11 +36,11 @@ public class AdminController {
 	@Autowired
 	private PropertyService propService;
 	
-	@PostMapping("/admin")
+	@PostMapping("/admins")
 	public ResponseEntity<Admin> saveAdminHandler(@Valid @RequestBody Admin admin) throws AdminException{
 		return new ResponseEntity<>(adminservice.createAdmin(admin),HttpStatus.CREATED);
 	}
-	@PutMapping("/admin")
+	@PutMapping("/admins")
 	public ResponseEntity<Admin> updateAdminHandler(@Valid @RequestBody Admin admin,@RequestParam(required = false) String key) throws AdminException,LoginException{
 		return new ResponseEntity<>(adminservice.updateAdmin(admin, key),HttpStatus.CREATED);
 	}

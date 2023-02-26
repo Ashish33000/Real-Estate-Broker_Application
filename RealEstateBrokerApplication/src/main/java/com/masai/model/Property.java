@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -25,9 +26,10 @@ public class Property {
 	private String city;
 	private boolean status;
 
-	
+	@JsonIgnore
 	@ManyToOne
 	private Broker broker;
+	@JsonIgnore
 	@ManyToOne
 	private Customer customers;
 

@@ -27,6 +27,7 @@ public class Customer extends User{
 	private List<Property> properties=new ArrayList<>();
 	@OneToOne
 	private Deal deal;
+	
 	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "customer")
 	private Broker broker;
 	

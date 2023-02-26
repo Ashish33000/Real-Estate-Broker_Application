@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Entity
@@ -22,8 +24,10 @@ public class Deal {
 	private Integer dealId;
 	private LocalDateTime dealDate;
 	private double dealCost;	
+	@JsonIgnore
 	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	private Property property;
+	@JsonIgnore
 	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "deal")
 	private Customer customer;
 	

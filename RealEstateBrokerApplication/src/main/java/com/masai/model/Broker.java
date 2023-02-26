@@ -10,6 +10,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Data
@@ -22,6 +24,7 @@ public class Broker extends Admin{
 	private String broName;
 	@OneToMany(mappedBy = "broker",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	private List<Property> properties=new ArrayList<>();
+	@JsonIgnore
 	@OneToOne
 	private Customer customer;
 	
