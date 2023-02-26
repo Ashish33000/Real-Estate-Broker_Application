@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6ffaff2f-6d59-495b-b522-11168c5d8617" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/RealEstateBrokerApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/RealEstateBrokerApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/controller/AdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/controller/AdminLoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/controller/AdminLoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/controller/UserLoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/controller/UserLoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/exception/AdminException.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/exception/AdminException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/exception/BrokerException.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/exception/BrokerException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/exception/CustomerException.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/exception/CustomerException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/exception/DealException.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/exception/DealException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/exception/GlobalException.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/exception/GlobalException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/exception/LoginException.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/exception/LoginException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/exception/MyErrorDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/exception/MyErrorDetails.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/exception/PropertyException.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/exception/PropertyException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/exception/UserException.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/exception/UserException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/model/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/model/Admin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/model/Broker.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/model/Broker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/model/CurrentUserSession.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/model/CurrentUserSession.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/model/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/model/Customer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/model/Deal.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/model/Deal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/model/LoginDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/model/LoginDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/model/Property.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/model/Property.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/model/PropertyCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/model/PropertyCriteria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/repository/AdminRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/repository/AdminRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/repository/BrokerRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/repository/BrokerRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/repository/CustomerRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/repository/CustomerRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/repository/DealRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/repository/DealRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/repository/PropertyRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/repository/PropertyRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/repository/SessionRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/repository/SessionRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/service/AdminLoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/service/AdminLoginService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/service/AdminLoginServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/service/AdminLoginServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/service/AdminService.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/service/AdminService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/service/AdminServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/service/AdminServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/service/BrokerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/service/BrokerService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/service/BrokerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/service/BrokerServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/service/CustomerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/service/CustomerService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/service/CustomerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/service/CustomerServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/service/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/service/LoginService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/service/UserLogInServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/service/UserLogInServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/service/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/main/java/com/masai/service/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/test/java/com/masai/RealEstateBrokerApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/bin/src/test/java/com/masai/RealEstateBrokerApplicationTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/src/main/java/com/masai/controller/AdminLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/src/main/java/com/masai/controller/AdminLoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/src/main/java/com/masai/controller/UserLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/src/main/java/com/masai/controller/UserLoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/src/main/java/com/masai/model/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/src/main/java/com/masai/model/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/src/main/java/com/masai/model/LoginDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/src/main/java/com/masai/model/UserLoginDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/src/main/java/com/masai/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/src/main/java/com/masai/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/src/main/java/com/masai/repository/AdminRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/src/main/java/com/masai/repository/AdminRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/src/main/java/com/masai/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/src/main/java/com/masai/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/src/main/java/com/masai/service/AdminLoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/src/main/java/com/masai/service/AdminLoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/src/main/java/com/masai/service/AdminLoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/src/main/java/com/masai/service/AdminLoginServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/src/main/java/com/masai/service/AdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/src/main/java/com/masai/service/AdminServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/src/main/java/com/masai/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/src/main/java/com/masai/service/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/src/main/java/com/masai/service/UserLogInServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/src/main/java/com/masai/service/UserLogInServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealEstateBrokerApplication/src/main/java/com/masai/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealEstateBrokerApplication/src/main/java/com/masai/service/UserServiceImpl.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2MEsRuJBRaMlce89qRmnzrfXh7R" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Acer/Desktop/holy-week-7770&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6ffaff2f-6d59-495b-b522-11168c5d8617" name="Changes" comment="" />
+      <created>1677344071129</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1677344071129</updated>
+    </task>
+    <servers />
+  </component>
+</project>

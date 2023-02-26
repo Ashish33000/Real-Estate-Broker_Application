@@ -11,16 +11,16 @@ import com.masai.exception.AdminException;
 import com.masai.exception.BrokerException;
 import com.masai.exception.LoginException;
 import com.masai.model.Broker;
-import com.masai.model.CurrentUserSession;
+import com.masai.model.BrokerAdminSession;
 import com.masai.repository.AdminRepository;
 import com.masai.repository.BrokerRepository;
-import com.masai.repository.SessionRepository;
+import com.masai.repository.BrokerSessionRepository;
 @Service
 public class BrokerServiceImpl implements BrokerService {
 	@Autowired
    private BrokerRepository brokerRepo;
 	@Autowired
-	private SessionRepository sessionRepo;
+	private BrokerSessionRepository AdminsessionRepo;
 	@Autowired
 	private AdminRepository adminRepo;
 	
@@ -42,8 +42,8 @@ public class BrokerServiceImpl implements BrokerService {
 
 	@Override
 	public Broker editBroker(Broker broker, String key) throws BrokerException, LoginException {
-		CurrentUserSession logInUser=sessionRepo.findByUuid(key);
-		if(logInUser.equals(null))throw new AdminException("Broker not loggedIn");
+		BrokerAdminSession logInAdmin=AdminsessionRepo.findByUuid(key);
+		if(logInAdmin.equals(null))throw new AdminException("Broker not loggedIn");
 		Optional<Broker> opt=brokerRepo.findById(broker.getBrokId());
 		if(opt.isPresent()) {
 			return brokerRepo.save(broker);
@@ -77,9 +77,9 @@ public class BrokerServiceImpl implements BrokerService {
 
 	@Override
 	public Broker saveBroker(Broker broker, String key) throws BrokerException, LoginException {
-		CurrentUserSession logInUser=sessionRepo.findByUuid(key);
+		BrokerAdminSession logInAdmin=AdminsessionRepo.findByUuid(key);
 	
-		if(logInUser.equals(null))
+		if(logInAdmin.equals(null))
 			throw new LoginException("Broker not loggedIn");
 		else
 			return brokerRepo.save(broker);
@@ -91,8 +91,8 @@ public class BrokerServiceImpl implements BrokerService {
 
 	@Override
 	public Broker removeBroker(Integer broId, String key) throws BrokerException, LoginException {
-		CurrentUserSession logInUser=sessionRepo.findByUuid(key);
-		if(logInUser.equals(null))throw new AdminException("Broker not loggedIn");
+		BrokerAdminSession logInAdmin=AdminsessionRepo.findByUuid(key);
+		if(logInAdmin.equals(null))throw new AdminException("Broker not loggedIn");
 		Optional<Broker> opt=brokerRepo.findById(broId);
 		if(opt.isPresent()) {
 			Broker broker=opt.get();

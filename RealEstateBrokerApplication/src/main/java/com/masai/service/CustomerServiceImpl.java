@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.masai.exception.CustomerException;
 import com.masai.exception.LoginException;
-import com.masai.model.CurrentUserSession;
 import com.masai.model.Customer;
+import com.masai.model.CustomerUserSession;
 import com.masai.repository.CustomerRepository;
-import com.masai.repository.SessionRepository;
+import com.masai.repository.CustomerSessionRepository;
 import com.masai.repository.UserRepository;
 @Service
 
@@ -20,7 +20,7 @@ public class CustomerServiceImpl implements CustomerService {
 	private CustomerRepository customerRepo;
 	
 	@Autowired
-	private SessionRepository sessionRepo;
+	private CustomerSessionRepository customersessionRepo;
 	
 	@Autowired
 	private UserRepository  userRepo;
@@ -37,7 +37,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public Customer editCoustomer(Customer customer,String key) throws CustomerException,LoginException {
-		CurrentUserSession logInUser=sessionRepo.findByUuid(key);
+		CustomerUserSession logInUser=customersessionRepo.findByUuid(key);
 		if(logInUser.equals(null))throw new LoginException("please provide valid key to update customer");
 	if(customer.getCustId()==logInUser.getUserId()) {
 		return customerRepo.save(customer);
@@ -49,7 +49,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public Customer removeCoustomer(Integer custId, String key) throws CustomerException, LoginException {
-		CurrentUserSession logInUser=sessionRepo.findByUuid(key);
+		CustomerUserSession logInUser=customersessionRepo.findByUuid(key);
 		if(logInUser.equals(null))throw new LoginException("Customer not logged in");
 		Optional<Customer> opt=customerRepo.findById(custId);
 		if(opt.isPresent()) {

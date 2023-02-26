@@ -2,6 +2,8 @@ package com.masai.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.exception.AdminException;
 import com.masai.exception.BrokerException;
@@ -25,16 +26,12 @@ import com.masai.model.PropertyCriteria;
 import com.masai.service.AdminService;
 import com.masai.service.BrokerService;
 import com.masai.service.PropertyService;
-
-import jakarta.validation.Valid;
-
-@RestController
 public class AdminController {
 	@Autowired
 	 private AdminService adminservice;
 	@Autowired
 	private BrokerService brokerService;
-	
+	@Autowired
 	private PropertyService propService;
 	
 	@PostMapping("/admin")

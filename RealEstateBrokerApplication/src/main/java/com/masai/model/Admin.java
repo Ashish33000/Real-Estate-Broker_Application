@@ -1,16 +1,17 @@
 package com.masai.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 import lombok.Data;
 
 @Data
@@ -24,7 +25,7 @@ public class Admin {
 	private String adminName;
 	@NotNull(message = "Mobile no Should not be null")
 	@Pattern(regexp = "[6,7,8,9]{1}[0-9]{9}",message = "Mobile no should be of 10 digit only")
-	private String adminMobileNo;
+	private String adminMobileno;
 	@NotNull(message = "Admin Password Should not be null")
 	@Size(min = 8,max = 15,message = "Password should be Min 8 character and max 15 character")
 	private String adminPassword;

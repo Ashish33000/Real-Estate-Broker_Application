@@ -4,20 +4,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.masai.exception.UserException;
-import com.masai.model.CurrentUserSession;
+import com.masai.model.CustomerUserSession;
 import com.masai.model.User;
-import com.masai.repository.SessionRepository;
+import com.masai.repository.CustomerSessionRepository;
 import com.masai.repository.UserRepository;
 @Service
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository  userRepo;
 	@Autowired
-	private SessionRepository sessionRepo;
+	private CustomerSessionRepository sessionRepo;
 
 	@Override
 	public User createUser(User user) throws UserException {
-		User existiongUser=userRepo.findByUserMobileNo(user.getUserMobileNo());
+		User existiongUser=userRepo.findByUserMobileno(user.getUserMobileno());
 		if(existiongUser!=null) {
 			throw new UserException("Customer Already Registered with Mobile n");
 		}
@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User updateUser(User user, String key) throws UserException {
-		CurrentUserSession loggInUser=sessionRepo.findByUuid(key);
+		CustomerUserSession loggInUser=sessionRepo.findByUuid(key);
 		if(loggInUser==null) {
 			throw new UserException("Please provide valid key to update Customer");
 		}

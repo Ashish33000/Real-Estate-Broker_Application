@@ -1,6 +1,5 @@
 package com.masai.model;
 
-import jakarta.persistence.Entity;
 import lombok.Data;
 
 

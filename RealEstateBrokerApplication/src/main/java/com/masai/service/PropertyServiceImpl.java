@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 
 import com.masai.exception.LoginException;
 import com.masai.exception.PropertyException;
-import com.masai.model.CurrentUserSession;
+import com.masai.model.BrokerAdminSession;
 import com.masai.model.Property;
 import com.masai.model.PropertyCriteria;
 import com.masai.repository.AdminRepository;
 import com.masai.repository.BrokerRepository;
+import com.masai.repository.BrokerSessionRepository;
 import com.masai.repository.PropertyRepository;
-import com.masai.repository.SessionRepository;
 @Service
 public class PropertyServiceImpl implements PropertyService {
 	@Autowired
@@ -22,7 +22,7 @@ public class PropertyServiceImpl implements PropertyService {
 	@Autowired
 	private BrokerRepository brokerRepo;
 	@Autowired
-	private SessionRepository sessionRepo;
+	private BrokerSessionRepository brokersessionRepo;
 	@Autowired
 	private AdminRepository adminRepo;
 	@Autowired
@@ -31,7 +31,7 @@ public class PropertyServiceImpl implements PropertyService {
 	
 	
 	public Property saveProperty(Property property, String key)throws LoginException, PropertyException {
-		CurrentUserSession logInUser=sessionRepo.findByUuid(key);
+		BrokerAdminSession logInUser=brokersessionRepo.findByUuid(key);
 		if(logInUser.equals(null))throw new LoginException("Broker not loggedIn");
 		if(!property.getConfiguration().equals("flat")&&!property.getConfiguration().equals("shop") && !property.getConfiguration().equals("plot")) {
 			throw new PropertyException("configuration can be plot shop and flat only");
@@ -45,7 +45,7 @@ public class PropertyServiceImpl implements PropertyService {
 	}
 	@Override
 	public Property updateProperty(Property property, String key)throws  LoginException, PropertyException {
-		CurrentUserSession logInUser=sessionRepo.findByUuid(key);
+		BrokerAdminSession logInUser=brokersessionRepo.findByUuid(key);
 		if(logInUser.equals(null))throw new LoginException("Broker not loggedIn");
 		if(!property.getConfiguration().equals("flat")&&!property.getConfiguration().equals("shop") && !property.getConfiguration().equals("plot")) {
 			throw new PropertyException("configuration can be plot shop and flat only");
@@ -62,7 +62,7 @@ public class PropertyServiceImpl implements PropertyService {
 	}
 	@Override
 	public Property deleteProperty(Integer propId, String key) throws  LoginException, PropertyException {
-		CurrentUserSession logInUser=sessionRepo.findByUuid(key);
+		BrokerAdminSession logInUser=brokersessionRepo.findByUuid(key);
 		if(logInUser.equals(null))throw new LoginException("Broker not loggedIn");
 		Property property=viewProperty(propId, key);
 		propertyRepo.deleteById(propId);
@@ -70,7 +70,7 @@ public class PropertyServiceImpl implements PropertyService {
 	}
 	@Override
 	public Property viewProperty(Integer propId, String key) throws  LoginException, PropertyException {
-		CurrentUserSession logInUser=sessionRepo.findByUuid(key);
+		BrokerAdminSession logInUser=brokersessionRepo.findByUuid(key);
 		if(logInUser.equals(null))throw new LoginException("Broker not loggedIn");
 	    Optional<Property> property=propertyRepo.findById(propId);
          if(property.isEmpty()) 
@@ -80,7 +80,7 @@ public class PropertyServiceImpl implements PropertyService {
 	}
 	@Override
 	public List<Property> listAllProperty(String key) throws  LoginException, PropertyException {
-		CurrentUserSession logInUser=sessionRepo.findByUuid(key);
+		BrokerAdminSession logInUser=brokersessionRepo.findByUuid(key);
 		if(logInUser.equals(null))throw new LoginException("Broker not loggedIn");
 		 List<Property> list=propertyRepo.findAll();
 		 if(list.size()==0) {
@@ -92,7 +92,7 @@ public class PropertyServiceImpl implements PropertyService {
 	public List<Property> listPropertyBycriteria(PropertyCriteria criteria, String key)
 			throws LoginException, PropertyException {
 		// TODO Auto-generated method stub
-		CurrentUserSession logInUser=sessionRepo.findByUuid(key);
+		BrokerAdminSession logInUser=brokersessionRepo.findByUuid(key);
 		if(logInUser.equals(null))throw new LoginException("Broker not loggedIn");
 		List<Property> list=propertyRepo.findByConfigurationAndOfferTypeAndCityAndOfferCostBetweenOrderByOfferCostAsc(criteria.getConfig(), criteria.getOffer(), criteria.getCity(), criteria.getMinCost(), criteria.getMaxcost());
 		if(list.isEmpty()) {

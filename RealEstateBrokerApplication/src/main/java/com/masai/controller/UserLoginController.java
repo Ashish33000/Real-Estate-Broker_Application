@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.exception.LoginException;
-import com.masai.model.LoginDTO;
+import com.masai.model.UserLoginDTO;
 import com.masai.service.LoginService;
 
 @RestController
@@ -17,7 +17,7 @@ public class UserLoginController {
 	@Autowired
 	private LoginService loginservice;
 	@PostMapping("/userlogin")
-	public ResponseEntity<String> logInHandler(@RequestBody LoginDTO dto) throws LoginException{
+	public ResponseEntity<String> logInHandler(@RequestBody UserLoginDTO dto) throws LoginException{
 		return new ResponseEntity<>(loginservice.logIntoAccount(dto),HttpStatus.OK);
 	}
 	@PostMapping("/userlogout")
