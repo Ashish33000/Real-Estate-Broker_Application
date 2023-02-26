@@ -52,8 +52,8 @@
 <p>spring.datasource.password=root</p>
 <p>spring.mvc.pathmatch.matching-strategy=ANT_PATH_MATCHER</p>
 <h1>Api Root EndPoints</h1>
-<p>http://localhost:8880/</p>
-<p>http://localhost:8880/swagger-ui/index.html</p>
+<p>http://localhost:8088/</p>
+<p>http://localhost:8088/swagger-ui/index.html</p>
 
 <h1>EER daigram</h1>
 
