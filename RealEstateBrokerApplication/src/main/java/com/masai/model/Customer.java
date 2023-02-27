@@ -11,6 +11,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Data
@@ -23,11 +25,13 @@ public class Customer extends User{
 	private Integer custId;
 	@NotBlank(message = "Customer name cannot be blanck")
 	private String custName;
+	@JsonIgnore
 	@OneToMany(mappedBy = "customers",cascade = CascadeType.ALL)
 	private List<Property> properties=new ArrayList<>();
+	@JsonIgnore
 	@OneToOne
 	private Deal deal;
-	
+	@JsonIgnore
 	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "customer")
 	private Broker broker;
 	

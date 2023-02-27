@@ -29,16 +29,18 @@ public class AdminLoginServiceImpl implements AdminLoginService {
 		}
 		Optional<BrokerAdminSession> validAdminSession=adminsessionRepo.findById(existingAdmin.getAdminId());
 		if(validAdminSession.isPresent()) {
+			System.out.println(validAdminSession);
 			throw new LoginException("Admin already login with this number");
 		}
-		if(existingAdmin.getAdminPassword().equals(dto.getAdminmobileNo())) {
+		if(existingAdmin.getAdminPassword().equals(dto.getAdminpassword())) {
 			String key=RandomString.make(6);
 			
 			BrokerAdminSession currentusersession=new BrokerAdminSession(existingAdmin.getAdminId(),key,LocalDateTime.now());
 			adminsessionRepo.save(currentusersession);
 			return currentusersession.toString();
-		}else
+		}else {
 			throw new LoginException("Admin already login with this number");
+		}
 		
 	}
 

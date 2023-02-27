@@ -31,7 +31,7 @@ public class AdminServiceImpl implements AdminService {
 		if(loggInUser==null) {
 			throw new AdminException("Please provide valid key to update Admin");
 		}
-		if(admin.getAdminId()==loggInUser.getAdminId()) {
+		if(admin.getAdminId().equals(loggInUser.getAdminId())) {
 			return adminRepo.save(admin);
 		}else {
 			throw new AdminException("Invalid customer Details please LogIn first");
