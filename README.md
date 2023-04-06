@@ -57,14 +57,14 @@
 
 <h1>ER daigram</h1>
 
-<img src="https://user-images.githubusercontent.com/87129673/221365948-7b435f82-f945-4b0b-b362-4e9c987a678f.png" alt="">
+<img src="https://user-images.githubusercontent.com/87129673/230294193-fb5e005b-d9c9-4dcd-81f8-e0b51f36efd9.png" alt="">
 
 
 <h1>Flow Chart-daigram</h1>
 
 
 
-  
+
 
 
 
