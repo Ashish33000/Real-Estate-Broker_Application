@@ -2,10 +2,12 @@ package com.masai.service;
 
 import java.util.List;
 
+import com.masai.entity.Property;
+import com.masai.entity.PropertyCriteria;
 import com.masai.exception.LoginException;
 import com.masai.exception.PropertyException;
-import com.masai.model.Property;
-import com.masai.model.PropertyCriteria;
+
+
 
 public interface PropertyService {
 	

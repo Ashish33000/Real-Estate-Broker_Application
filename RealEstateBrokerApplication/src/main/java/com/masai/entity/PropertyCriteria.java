@@ -1,4 +1,4 @@
-package com.masai.model;
+package com.masai.entity;
 
 import lombok.Data;
 

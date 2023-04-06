@@ -1,13 +1,12 @@
 
 
-package com.masai.model;
+package com.masai.entity;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,10 +16,10 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class CustomerUserSession {
+public class BrokerSession {
 	@Id
 	@Column(unique = true)
-	private Integer custId;
+	private Integer brokerId;
 	private String uuid;
 	private LocalDateTime localDateTime;
 

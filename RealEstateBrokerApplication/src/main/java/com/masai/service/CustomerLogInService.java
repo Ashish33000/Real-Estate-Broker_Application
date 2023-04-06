@@ -1,7 +1,7 @@
 package com.masai.service;
 
+import com.masai.entity.CustomerLoginDTO;
 import com.masai.exception.LoginException;
-import com.masai.model.CustomerLoginDTO;
 
 public interface CustomerLogInService {
 	

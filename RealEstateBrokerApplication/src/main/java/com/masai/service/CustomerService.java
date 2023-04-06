@@ -2,9 +2,11 @@ package com.masai.service;
 
 import java.util.List;
 
+import com.masai.entity.Customer;
 import com.masai.exception.CustomerException;
 import com.masai.exception.LoginException;
-import com.masai.model.Customer;
+
+
 
 public interface CustomerService {
 	

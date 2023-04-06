@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.masai.entity.Property;
+import com.masai.entity.PropertyCriteria;
 import com.masai.exception.LoginException;
 import com.masai.exception.PropertyException;
-import com.masai.model.Property;
-import com.masai.model.PropertyCriteria;
+
+
 @Service
 public class PropertyServiceImpl implements PropertyService {
 	

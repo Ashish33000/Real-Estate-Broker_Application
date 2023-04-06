@@ -1,7 +1,7 @@
 package com.masai.service;
 
+import com.masai.entity.BrokerLoginDTO;
 import com.masai.exception.LoginException;
-import com.masai.model.BrokerLoginDTO;
 
 public interface BrokerLoginService {
 	

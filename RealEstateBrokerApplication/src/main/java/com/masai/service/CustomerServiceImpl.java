@@ -4,11 +4,12 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.masai.entity.Customer;
 import com.masai.exception.CustomerException;
 import com.masai.exception.LoginException;
-import com.masai.model.Customer;
-@Service
 
+
+@Service
 public class CustomerServiceImpl implements CustomerService {
 	
 
