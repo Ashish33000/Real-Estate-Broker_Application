@@ -1,14 +1,16 @@
 package com.masai.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -16,16 +18,20 @@ import lombok.Data;
 
 @Data
 @Entity
-@PrimaryKeyJoinColumn(name="adminId")
-public class Broker extends Admin{
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer brokId;
-	private String broName;
-	@OneToMany(mappedBy = "broker",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-	private List<Property> properties=new ArrayList<>();
+public class Broker extends User {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer brokerId;
+	@NotNull(message = "Mobile no Should not be null")
+	@Pattern(regexp = "[6-9]{1}[0-9]{9}", message = "Mobile no should be of 10 digit only")
+	private String brokerMobileNo;
+	@NotNull
+	@Pattern(regexp = "[a-z]", message = "password should be 8 digit")
+	private String brokerPassword;
+
+	@OneToMany(mappedBy = "broker", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JsonIgnore
-	@OneToOne
-	private Customer customer;
-	
+	private List<Property> properties;
+
+
 }

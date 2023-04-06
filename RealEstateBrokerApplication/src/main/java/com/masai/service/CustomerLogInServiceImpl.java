@@ -7,38 +7,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.masai.exception.LoginException;
+import com.masai.model.Customer;
+import com.masai.model.CustomerLoginDTO;
 import com.masai.model.CustomerUserSession;
-import com.masai.model.User;
-import com.masai.model.UserLoginDTO;
+import com.masai.repository.CustomerRepository;
 import com.masai.repository.CustomerSessionRepository;
-import com.masai.repository.UserRepository;
 
 import net.bytebuddy.utility.RandomString;
 @Service
-public class UserLogInServiceImpl implements LoginService {
+public class CustomerLogInServiceImpl implements CustomerLogInService {
 	@Autowired
-	private UserRepository  userRepo;
+	private CustomerRepository  custRepo;
 	@Autowired
 	private CustomerSessionRepository sessionRepo;
 
 	@Override
-	public String logIntoAccount(UserLoginDTO dto) throws LoginException {
-		User existiongUser=userRepo.findByUserMobileno(dto.getUsermobileNo());
-		if(existiongUser==null) {
+	public String logIntoAccount(CustomerLoginDTO dto) throws LoginException {
+		Customer existingCustomer=custRepo.findByCustomerMobileNo(dto.getCustomerMobileNo());
+		if(existingCustomer==null) {
 			throw new LoginException("Please Enter a Valid Mobile no");
 		}
-		Optional<CustomerUserSession> validCustomerSession=sessionRepo.findById(existiongUser.getUserId());
+		Optional<CustomerUserSession> validCustomerSession=sessionRepo.findById(existingCustomer.getCustId());
 		if(validCustomerSession.isPresent()) {
-			throw new LoginException("User already login with this number");
+			throw new LoginException("Customer already login with this number");
 		}
-		if(existiongUser.getUserPassword().equals(dto.getUserpassword())) {
+		if(existingCustomer.getCustomerPassword().equals(dto.getCustomerPassword())) {
 			String key=RandomString.make(6);
 			
-			CustomerUserSession currentusersession=new CustomerUserSession(existiongUser.getUserId(),key,LocalDateTime.now());
+			CustomerUserSession currentusersession=new CustomerUserSession(existingCustomer.getCustId(),key,LocalDateTime.now());
 			sessionRepo.save(currentusersession);
 			return currentusersession.toString();
 		}else
-			throw new LoginException("User already login with this number");
+			throw new LoginException("customer already login with this number");
 		
 	
 	}

@@ -7,8 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.Data;
 
 @Data
@@ -17,6 +15,7 @@ public class Property {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer propId;
+
 	private String configuration;
 	private String offerType;
 	private double offerCost;
@@ -26,12 +25,10 @@ public class Property {
 	private String city;
 	private boolean status;
 
-	@JsonIgnore
+
 	@ManyToOne
 	private Broker broker;
-	@JsonIgnore
-	@ManyToOne
-	private Customer customers;
+
 
 	
 	

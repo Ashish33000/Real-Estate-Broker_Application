@@ -20,7 +20,7 @@ import lombok.ToString;
 public class BrokerAdminSession {
 	@Id
 	@Column(unique = true)
-	private Integer adminId;
+	private Integer brokerId;
 	private String uuid;
 	private LocalDateTime localDateTime;
 

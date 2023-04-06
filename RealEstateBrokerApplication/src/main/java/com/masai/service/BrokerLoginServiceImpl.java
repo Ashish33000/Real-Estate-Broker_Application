@@ -7,35 +7,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.masai.exception.LoginException;
-import com.masai.model.Admin;
-import com.masai.model.AdminLoginDTO;
+import com.masai.model.Broker;
 import com.masai.model.BrokerAdminSession;
-import com.masai.repository.AdminRepository;
+import com.masai.model.BrokerLoginDTO;
+import com.masai.repository.BrokerRepository;
 import com.masai.repository.BrokerSessionRepository;
 
 import net.bytebuddy.utility.RandomString;
 @Service
-public class AdminLoginServiceImpl implements AdminLoginService {
+public class BrokerLoginServiceImpl implements BrokerLoginService {
 	@Autowired
-	private AdminRepository adminRepo;
+	private BrokerRepository brokerRepo;
 	@Autowired
 	private BrokerSessionRepository adminsessionRepo;
 
 	@Override
-	public String logIntoAccount(AdminLoginDTO dto) throws LoginException {
-		Admin existingAdmin=adminRepo.findByAdminMobileno(dto.getAdminmobileNo());
-		if(existingAdmin==null) {
+	public String logIntoAccount(BrokerLoginDTO dto) throws LoginException {
+		Broker existingBroker=brokerRepo.findByBrokerMobileNo(dto.getBrokerMobileNo());
+		if(existingBroker==null) {
 			throw new LoginException("Please Enter a Valid Mobile no");
 		}
-		Optional<BrokerAdminSession> validAdminSession=adminsessionRepo.findById(existingAdmin.getAdminId());
-		if(validAdminSession.isPresent()) {
-			System.out.println(validAdminSession);
+		Optional<BrokerAdminSession> validBrokerSession=adminsessionRepo.findById(existingBroker.getBrokerId());
+		if(validBrokerSession.isPresent()) {
+			System.out.println(validBrokerSession);
 			throw new LoginException("Admin already login with this number");
 		}
-		if(existingAdmin.getAdminPassword().equals(dto.getAdminpassword())) {
+		if(existingBroker.getBrokerPassword().equals(dto.getBrokerPassword())) {
 			String key=RandomString.make(6);
 			
-			BrokerAdminSession currentusersession=new BrokerAdminSession(existingAdmin.getAdminId(),key,LocalDateTime.now());
+			BrokerAdminSession currentusersession=new BrokerAdminSession(existingBroker.getBrokerId(),key,LocalDateTime.now());
 			adminsessionRepo.save(currentusersession);
 			return currentusersession.toString();
 		}else {

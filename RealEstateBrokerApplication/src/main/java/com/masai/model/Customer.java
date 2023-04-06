@@ -1,39 +1,35 @@
 package com.masai.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.validation.constraints.NotBlank;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import lombok.Data;
 
 @Data
 @Entity
-@PrimaryKeyJoinColumn(name="")
-
 public class Customer extends User{
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer custId;
-	@NotBlank(message = "Customer name cannot be blanck")
-	private String custName;
-	@JsonIgnore
-	@OneToMany(mappedBy = "customers",cascade = CascadeType.ALL)
-	private List<Property> properties=new ArrayList<>();
-	@JsonIgnore
-	@OneToOne
-	private Deal deal;
-	@JsonIgnore
-	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "customer")
-	private Broker broker;
+	@NotNull(message = "Mobile no Should not be null")
+	@Pattern(regexp = "[6-9]{1}[0-9]{9}", message = "Mobile no should be of 10 digit only")
+	private String customerMobileNo;
+	@NotNull
+	@Pattern(regexp = "[a-z]", message = "password should be 8 digit")
+	private String customerPassword;
+//	@JsonIgnore
+//	@OneToMany(mappedBy = "customers",cascade = CascadeType.ALL)
+//	private List<Property> properties;
+//	@JsonIgnore
+//	@OneToOne
+//	private Deal deal;
+//	@JsonIgnore
+//	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "customer")
+//	private Broker broker;
 	
 
 }

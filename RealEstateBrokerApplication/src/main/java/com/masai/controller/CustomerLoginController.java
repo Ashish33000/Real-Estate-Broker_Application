@@ -9,18 +9,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.exception.LoginException;
-import com.masai.model.AdminLoginDTO;
-import com.masai.service.AdminLoginService;
+import com.masai.model.CustomerLoginDTO;
+import com.masai.service.CustomerLogInService;
 
 @RestController
-public class AdminLoginController {
+public class CustomerLoginController {
 	@Autowired
-	private AdminLoginService loginservice;
-	@PostMapping("/adminlogin")
-	public ResponseEntity<String> logInHandler(@RequestBody AdminLoginDTO dto) throws LoginException{
+	private CustomerLogInService loginservice;
+	@PostMapping("/userlogin")
+	public ResponseEntity<String> logInHandler(@RequestBody CustomerLoginDTO dto) throws LoginException{
 		return new ResponseEntity<>(loginservice.logIntoAccount(dto),HttpStatus.OK);
 	}
-	@PostMapping("/adminlogout")
+	@PostMapping("/userlogout")
 	public ResponseEntity<String> logoutInHandler(@RequestParam(required = false) String key) throws LoginException{
 		return new ResponseEntity<>(loginservice.logOutAccount(key),HttpStatus.OK);
 	}

@@ -20,7 +20,7 @@ import lombok.ToString;
 public class CustomerUserSession {
 	@Id
 	@Column(unique = true)
-	private Integer userId;
+	private Integer custId;
 	private String uuid;
 	private LocalDateTime localDateTime;
 
