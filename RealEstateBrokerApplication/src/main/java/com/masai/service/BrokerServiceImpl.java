@@ -2,20 +2,25 @@
 package com.masai.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.masai.entity.Broker;
+import com.masai.entity.BrokerSession;
 import com.masai.exception.BrokerException;
 import com.masai.exception.LoginException;
 import com.masai.repository.BrokerRepository;
+import com.masai.repository.BrokerSessionRepository;
 
 
 @Service
 public class BrokerServiceImpl implements BrokerService {
 	@Autowired
 	private BrokerRepository broRepo;
+	@Autowired
+	private BrokerSessionRepository sessionRepo;
 
 	@Override
 	public Broker saveBroker(Broker broker) throws BrokerException {
@@ -29,9 +34,17 @@ public class BrokerServiceImpl implements BrokerService {
 	}
 
 	@Override
-	public Broker editBroker(Broker broker, String key) throws BrokerException, LoginException {
-		// TODO Auto-generated method stub
-		return null;
+	public Broker editBroker(Broker broker,  String key) throws BrokerException, LoginException {
+		BrokerSession validSession=sessionRepo.findByUuid(key);
+		if(validSession==null)throw new LoginException("Broker Not Logged In LogIn first");
+		Optional<Broker> opt=broRepo.findById(broker.getBrokerId());
+		if(opt.isEmpty()) {
+			throw new BrokerException("No Broker Exist with this Given Id: "+broker.getBrokerId());
+		}else {
+			 broker=opt.get();
+			broRepo.save(broker);
+			return broker;
+		}
 	}
 
 	@Override
@@ -51,6 +64,9 @@ public class BrokerServiceImpl implements BrokerService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
 
 
 
