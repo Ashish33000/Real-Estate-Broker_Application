@@ -24,12 +24,12 @@ public class UserController {
 	private UsersService userSer;
 	@Autowired
 	private PasswordEncoder ps;
-	@Autowired
-	private UserRepository userRepo;
+	
 	
 	@PostMapping("/users")
 	@ResponseStatus(code=HttpStatus.CREATED)
 	public Users saveUserHandler(@RequestBody Users users) {
+		users.setRole("ROLE_"+users.getRole().toUpperCase());
 		users.setUserPassword(ps.encode(users.getUserPassword()));
 		return userSer.registerUsers(users);
 	}
@@ -43,13 +43,7 @@ public class UserController {
 	public List<Users> getAllUsersHandler(){
 		return userSer.getAllUsersDetails();
 	}
-	@GetMapping("/signIn")
-	@ResponseStatus(code=HttpStatus.OK)
-	public Users getLoggedInUsersHandler(Authentication auth) {
-		System.out.println(auth);
-		Users user=userRepo.findByUserEmail(auth.getName()).orElseThrow(()->new BadCredentialsException("Invalid Username and Password"));
-		return user;
-	}
+	
 	
 
 }

@@ -29,18 +29,17 @@ public  class Users {
 	@NotNull(message = "user name Should not be null")
 	private String userName;
 	@Email
-	@NotNull(message = "user Email Should not be null")
+//	@NotNull(message = "user Email Should not be null")
 	@Column(unique =true )
 	private String userEmail;
-	@NotNull
-	@Pattern(regexp = "[a-z]{8}", message = "password should be 8 digit")
+//	@NotNull
+//	@Pattern(regexp = "[0-9]{8}", message = "password should be 8 digit")
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private String userPassword;
 	@NotNull(message = "Mobile no Should not be null")
 	@Pattern(regexp = "[6-9]{1}[0-9]{9}", message = "Mobile no should be of 10 digit only")
 	private String userMobileNo;
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "user",fetch = FetchType.EAGER)
-	private List<Authority> authorities=new ArrayList<>();
+	private String role;
 	
 	
 	

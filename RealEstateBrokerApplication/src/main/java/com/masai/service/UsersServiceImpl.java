@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.masai.entity.Authority;
 import com.masai.entity.Users;
 import com.masai.exception.UserException;
 import com.masai.repository.UserRepository;
@@ -16,10 +15,7 @@ public class UsersServiceImpl implements UsersService {
 
 	@Override
 	public Users registerUsers(Users users) {
-		List<Authority> authorities=users.getAuthorities();
-		for(Authority auth:authorities) {
-			auth.setUser(users);
-		}
+		
 		return userRepo.save(users);
 	}
 

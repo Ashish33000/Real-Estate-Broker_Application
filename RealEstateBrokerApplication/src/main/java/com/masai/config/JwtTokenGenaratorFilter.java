@@ -27,34 +27,35 @@ public class JwtTokenGenaratorFilter extends OncePerRequestFilter {
 			throws ServletException, IOException {
 		Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
 		if(null!=authentication) {
-			System.out.println("auth.getAuthorities "+authentication.getAuthorities());
 			SecretKey key=Keys.hmacShaKeyFor(SecurityConstants.JWT_KEY.getBytes());
 			String jwt=Jwts.builder()
 					.setIssuer("Ashish")
-					.setSubject("JWT Token")
+					.setSubject("JWT TOKEN")
 					.claim("username", authentication.getName())
-					.claim("authorities", populateAuthoritied(authentication.getAuthorities()))
+					.claim("role", getRole(authentication.getAuthorities()))
 					.setIssuedAt(new Date())
-					.setExpiration(new Date(new Date().getTime()-30000000))
+					.setExpiration(new Date(new Date().getTime()+30000000))
 					.signWith(key).compact();
-			response.setHeader(SecurityConstants.JWT_HAEDER, jwt);
+			response.setHeader(SecurityConstants.JWT_HEADER, jwt);
 					
 		}
 		filterChain.doFilter(request, response);
 		
 	}
 
-	private String populateAuthoritied(Collection<? extends GrantedAuthority> authorities) {
-		Set<String> authoritiesSet=new HashSet<>();
-		for(GrantedAuthority auth:authorities) {
-			authoritiesSet.add(auth.getAuthority());
+
+	
+	
+	private String getRole(Collection<? extends GrantedAuthority> authorities) {
+		String role="";
+		for(GrantedAuthority au:authorities) {
+			role=au.getAuthority();
 		}
-		return String.join(",", authoritiesSet);
+		return role;
 	}
-	
-	
-	
-	protected boolean shoulNotFilter(HttpServletRequest request) throws ServletException{
+
+	@Override
+	protected boolean shouldNotFilter(HttpServletRequest request)throws ServletException{
 		return !request.getServletPath().equals("/signIn");
 	}
 

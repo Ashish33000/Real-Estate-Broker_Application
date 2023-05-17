@@ -1,13 +1,16 @@
 package com.masai.config;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.crypto.SecretKey;
 
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -24,15 +27,22 @@ public class JwtTokenValidatorFilter extends OncePerRequestFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
-		String jwt=request.getHeader(SecurityConstants.JWT_HAEDER);
+		String jwt=request.getHeader(SecurityConstants.JWT_HEADER);
 		if(jwt!=null) {
 			try {
 				jwt=jwt.substring(7);
 				SecretKey key=Keys.hmacShaKeyFor(SecurityConstants.JWT_KEY.getBytes());
 				Claims claims=Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(jwt).getBody();
+				
 				String username=String.valueOf(claims.get("username"));
-				String authorities=(String)claims.get("authorities");
-				Authentication auth=new UsernamePasswordAuthenticationToken(username, null,AuthorityUtils.commaSeparatedStringToAuthorityList(authorities));
+				
+				String role=(String)claims.get("role");
+			
+				List<GrantedAuthority> auths=new ArrayList<>();
+				auths.add(new SimpleGrantedAuthority(role));
+				
+				Authentication auth=new UsernamePasswordAuthenticationToken(username,null, auths);
+				
 				SecurityContextHolder.getContext().setAuthentication(auth);
 				
 				
@@ -44,8 +54,8 @@ public class JwtTokenValidatorFilter extends OncePerRequestFilter {
 		
 	}
 	
-	
-	protected boolean shoulNotFilter(HttpServletRequest request) throws ServletException{
+	@Override
+	protected boolean shouldNotFilter(HttpServletRequest request)throws ServletException{
 		return request.getServletPath().equals("/signIn");
 	}
 
