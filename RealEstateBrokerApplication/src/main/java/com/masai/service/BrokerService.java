@@ -11,7 +11,7 @@ public interface BrokerService {
 	
 	
 	public Broker saveBroker(Broker broker)throws BrokerException;
-	public Broker editBroker(Broker broker) throws BrokerException;
+	public Broker editBroker(Integer broId,Broker broker) throws BrokerException;
 	public Broker removeBroker(Integer broId)throws BrokerException;
 	public Broker viewBroker(Integer broId)throws BrokerException;
 	public List<Broker> viewAllBrokers()throws BrokerException;
