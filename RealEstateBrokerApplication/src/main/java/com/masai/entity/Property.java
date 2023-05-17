@@ -27,9 +27,9 @@ public class Property {
 	private boolean status;
 
 
-	@ManyToOne
-	@JoinColumn(name="bid")
-	private Broker broker;
+//	@ManyToOne
+//	@JoinColumn(name="bid")
+//	private Broker broker;
 
 
 	

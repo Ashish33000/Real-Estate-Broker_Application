@@ -12,37 +12,44 @@ import com.masai.exception.PropertyException;
 
 @Service
 public class PropertyServiceImpl implements PropertyService {
+
+	@Override
+	public Property saveProperty(Property property) throws LoginException, PropertyException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Property updateProperty(Property property) throws LoginException, PropertyException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Property deleteProperty(Integer propId) throws LoginException, PropertyException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Property viewProperty(Integer propId) throws LoginException, PropertyException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Property> listAllProperty() throws PropertyException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Property> listPropertyBycriteria(PropertyCriteria criteria) throws PropertyException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
-	public Property saveProperty(Property property, String key) throws LoginException, PropertyException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public Property updateProperty(Property property, String key) throws LoginException, PropertyException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public Property deleteProperty(Integer propId, String key) throws LoginException, PropertyException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public Property viewProperty(Integer propId, String key) throws LoginException, PropertyException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public List<Property> listAllProperty(String key) throws LoginException, PropertyException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public List<Property> listPropertyBycriteria(PropertyCriteria criteria, String key)
-			throws LoginException, PropertyException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 
 	

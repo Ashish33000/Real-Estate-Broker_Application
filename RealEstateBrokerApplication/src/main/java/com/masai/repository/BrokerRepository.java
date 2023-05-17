@@ -6,6 +6,6 @@ import com.masai.entity.Broker;
 
 public interface BrokerRepository extends JpaRepository<Broker, Integer> {
 	
-	public Broker findByBrokerMobileNo(String brokermobileNo);
+	
 
 }

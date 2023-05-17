@@ -6,12 +6,10 @@ import org.springframework.stereotype.Service;
 
 import com.masai.entity.Customer;
 import com.masai.exception.CustomerException;
-import com.masai.exception.LoginException;
 
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
-	
 
 	@Override
 	public Customer addCoustomer(Customer customer) throws CustomerException {
@@ -20,13 +18,13 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public Customer editCoustomer(Customer customer, String key) throws CustomerException, LoginException {
+	public Customer editCoustomer(Customer customer) throws CustomerException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Customer removeCoustomer(Integer custId, String key) throws CustomerException, LoginException {
+	public Customer removeCoustomer(Integer custId) throws CustomerException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -42,6 +40,8 @@ public class CustomerServiceImpl implements CustomerService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+
 	
 
 

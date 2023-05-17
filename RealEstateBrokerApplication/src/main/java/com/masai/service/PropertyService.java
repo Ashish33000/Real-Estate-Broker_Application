@@ -11,12 +11,12 @@ import com.masai.exception.PropertyException;
 
 public interface PropertyService {
 	
-	public Property saveProperty(Property property,String key)throws LoginException,PropertyException;
-	public Property updateProperty(Property property,String key)throws LoginException,PropertyException;
-	public Property deleteProperty(Integer propId,String key)throws LoginException,PropertyException;
-	public Property viewProperty(Integer propId,String key)throws LoginException,PropertyException;
-	public List<Property> listAllProperty(String key)throws LoginException,PropertyException;
-	public List<Property> listPropertyBycriteria(PropertyCriteria criteria,String key)throws LoginException,PropertyException;
+	public Property saveProperty(Property property)throws LoginException,PropertyException;
+	public Property updateProperty(Property property)throws LoginException,PropertyException;
+	public Property deleteProperty(Integer propId)throws LoginException,PropertyException;
+	public Property viewProperty(Integer propId)throws LoginException,PropertyException;
+	public List<Property> listAllProperty()throws PropertyException;
+	public List<Property> listPropertyBycriteria(PropertyCriteria criteria)throws PropertyException;
 	
 	
 	

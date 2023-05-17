@@ -23,9 +23,9 @@ public class Deal {
 	private LocalDateTime dealDate;
 	private double dealCost;	
 
-	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-	@JoinColumn(name="pid")
-	private Property property;
+//	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+//	@JoinColumn(name="pid")
+//	private Property property;
 
 
 }
