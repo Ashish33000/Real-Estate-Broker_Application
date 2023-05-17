@@ -9,8 +9,8 @@ import com.masai.exception.CustomerException;
 
 public interface CustomerService {
 	
-	public Customer addCoustomer(Customer customer) throws CustomerException;
-	public Customer editCoustomer(Customer customer) throws CustomerException;
+	public Customer addCoustomer(Customer customer);
+	public Customer editCoustomer(Integer custId,Customer customer) throws CustomerException;
 	public Customer removeCoustomer(Integer custId) throws CustomerException;
 	public Customer viewCoustomer(Integer custId) throws CustomerException;
 	public List<Customer> viewAllCoustomer()throws CustomerException;
