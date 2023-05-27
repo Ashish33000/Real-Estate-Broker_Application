@@ -2,6 +2,7 @@
 
 package com.masai.entity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.CascadeType;
@@ -20,12 +21,27 @@ public class Deal {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer dealId;
-	private LocalDateTime dealDate;
-	private double dealCost;	
+	private LocalDate dealDate;
+	private double dealCost;
+	
+	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@JoinColumn(name="pid")
+	private Customer customer;
 
-//	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-//	@JoinColumn(name="pid")
-//	private Property property;
+	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@JoinColumn(name="propId")
+	private Property property;
+
+	public Deal(LocalDate localDate, double dealCost, Customer customer, Property property) {
+		super();
+		this.dealDate = localDate;
+		this.dealCost = dealCost;
+		this.customer = customer;
+		this.property = property;
+	}
+	
+	
+	
 
 
 }
