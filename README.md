@@ -40,20 +40,11 @@
 <p>Sonali Ghorpade</p>
 
 
-<h1>Installation And Run</h1>
-<p>Before Running The Api Server You Should  Update the database config Inside The Application.properies file</p>
-<p>Update The port ni,username and password</p>
-<p>server.port=8088</p>
+https://real-estate-brokerapplication-production.up.railway.app/login
+This Application is deployed in Railway Database
 
 
-<p>spring.datasource.url=jdbc:mysql://localhost:3306/dbName</p>
-<p>spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver</p>
-<p>spring.datasource.username=root</p>
-<p>spring.datasource.password=root</p>
-<p>spring.mvc.pathmatch.matching-strategy=ANT_PATH_MATCHER</p>
-<h1>Api Root EndPoints</h1>
-<p>http://localhost:8088/</p>
-<p>http://localhost:8088/swagger-ui/index.html</p>
+
 
 <h1>ER daigram</h1>
 
