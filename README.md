@@ -3,7 +3,7 @@
 <h2>Rest API for Real Estate Broker Application</h2>
 <p>We have Developed the REST API for Real Estate Broker Application.This Api performs All the basic CRUD operation of our Application with user validation at every step.</p>
 <h1>Modules</h1>
-<h3>I.LogIn module</h3>
+<h3>I.LogIn module By Spring SSecurity And JWT Token</h3>
 <h3>II.Customer Module</h3>
 <h3>III.Broker module</h3>
 <h3>IV.Property module</h3>
@@ -11,7 +11,7 @@
 <h3>VI.Deal module</h3>
 
 <h1>Features</h1>
-<p>Broker and Customers Autentication with session uuid</p>
+<p>Broker and Customers Autentication with JWT Token</p>
 <h3>I.Broker Function</h3>
 <p>Broker is the main role in Entire Application</p>
 <p>Broker has the acess of entire Application like </p>
@@ -26,7 +26,8 @@
 
 <h1>Tech Stack</h1>
 <p>Java</p>
-<p>Spring framework</p>
+<p>Spring Security</p>
+<p>JWT Token</p>
 <p>Spring Boot</p>
 <p>Spring Data JPA</p>
 <p>Hibernate</p>
@@ -41,7 +42,8 @@
 
 
 https://real-estate-brokerapplication-production.up.railway.app/login
-This Application is deployed in Railway Database
+
+<P>This Application is deployed in Railway Database</p>
 
 
 
