@@ -18,7 +18,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
             		@SecurityRequirement(name = "bearerToken")
             },
             servers= {
-            	@Server(url="/",description = "https://real-estate-brokerapplication-production.up.railway.app/")	
+            	@Server(url="/",description = "https://real-estate-brokerapplication-production.up.railway.app")	
             }
 )
 @SecuritySchemes({
