@@ -1,0 +1,38 @@
+<div class="container mt-3">
+  <form [formGroup]="signupForm" (ngSubmit)="signupSubmit()">
+    <!-- errormsgsowhere -->
+    <div *ngIf="errmsgshow">
+      <p class="text-danger">{{ errmsg }}</p>
+    </div>
+
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="name"
+        placeholder="Enter Your Name"
+      />
+    </div>
+    <div class="mb-3">
+      <input
+        type="email"
+        class="form-control"
+        formControlName="email"
+        placeholder="Enter Your Email"
+      />
+    </div>
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="password"
+        placeholder="Enter Your Password"
+      />
+    </div>
+
+
+    <button type="submit" class="btn btn-primary btn-primary ml-4">
+      Signup
+    </button>
+  </form>
+</div>

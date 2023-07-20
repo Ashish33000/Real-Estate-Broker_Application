@@ -1,0 +1,45 @@
+spring:
+ cloud:
+   gateway:
+     routes:
+       - id: property-service
+         uri: lb://PROPERTY-SERVICE
+         predicates:
+           - Path=/property/**
+         filters:
+           - AuthenticationFilter
+
+
+       - id: broker-service
+         uri: lb://BROKER-SERVICE
+         predicates:
+           - Path=/broker/**
+         filters:
+           - AuthenticationFilter
+
+       - id: identity-service
+         uri: lb://IDENTITY-SERVICE
+         predicates:
+           - Path=/auth/**
+           
+       - id: deal-service
+         uri: lb://DEAL-SERVICE
+         predicates:
+           - Path=/deal/**
+         filters:
+           - AuthenticationFilter
+           
+       - id: customer-service
+         uri: lb://CUSTOMER-SERVICE
+         predicates:
+           - Path=/customer/**
+         filters:
+           - AuthenticationFilter
+
+ application:
+   name: API-GATEWAY
+
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:8761/eureka/
